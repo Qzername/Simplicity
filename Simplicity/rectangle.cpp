@@ -10,7 +10,7 @@ Rectangle::Rectangle(float x, float y, float width, float height) {
 	this->width = width;
 	this->height = height;
 
-    this->VAO = GenerateVAO();
+    VAO = GenerateVAO();
 }
 
 unsigned int Rectangle::GenerateVAO() {
@@ -51,6 +51,6 @@ unsigned int Rectangle::GenerateVAO() {
 }
 
 void Rectangle::Render() {
-    glBindVertexArray(this->VAO);
+    glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

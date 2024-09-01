@@ -42,6 +42,9 @@
     <ClCompile Include="rectangle.cpp">
       <Filter>Source Files\Objects\2D</Filter>
     </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="rectangle.h">
       <Filter>Header Files\Objects\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
