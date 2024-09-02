@@ -13,6 +13,30 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 "}\n\0";
 
+void readShaders()
+{
+    //future me problem ig
+    shaderInfo shaders[2];
+
+    int i = 0;
+
+    for (const auto& entry : fs::directory_iterator("./Shaders/"))
+    {
+        string output, temp;
+
+        ifstream shaderFile(entry.path().string());
+
+        while (getline(shaderFile, temp)) {
+            output += temp;
+        }
+
+        ShaderType type;
+        //shaders[i] = {}
+            
+        i++;
+    }
+}
+
 unsigned int compileShaders() {
     unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
@@ -24,7 +48,7 @@ unsigned int compileShaders() {
     if (!success)
     {
         glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+        cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
 
 
@@ -36,7 +60,7 @@ unsigned int compileShaders() {
     if (!success)
     {
         glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+        cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
     }
 
 
@@ -49,7 +73,7 @@ unsigned int compileShaders() {
     glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
     if (!success) {
         glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-        std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+        cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
     }
 
     glDeleteShader(vertexShader);
