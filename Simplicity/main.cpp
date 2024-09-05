@@ -2,18 +2,16 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include <string>
+#include <vector>
 
 #include "window.h"
 #include "rectangle.h"
-
 
 #include "shaderCompiling.h"
 
 int main()
 {
-    readShaders();
-    return 0;
-
     Window window("Simplicity test window");
 
     Rectangle rect(0.20f,0.20f,0.5f,0.5f);

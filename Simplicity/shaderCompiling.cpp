@@ -13,12 +13,9 @@ const char* fragmentShaderSource = "#version 330 core\n"
 "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
 "}\n\0";
 
-shaderInfo* readShaders()
+vector<shaderInfo> readShaders()
 {
-    //future me problem ig
-    shaderInfo shaders[2];
-
-    int i = 0;
+    vector<shaderInfo> shaders;
 
     for (const auto& entry : fs::directory_iterator("./Shaders/"))
     {
@@ -28,7 +25,7 @@ shaderInfo* readShaders()
         ifstream shaderFile(path);
 
         while (getline(shaderFile, temp)) {
-            output += temp;
+            output += temp + '\n';
         }
 
         shaderInfo shader;
@@ -37,37 +34,23 @@ shaderInfo* readShaders()
         if (path.ends_with(".frag"))
             shader.type = FRAGMENT;
 
-        cout << output << endl;
-
         shader.content = output;
 
-        shaders[i] = shader;
-            
-        i++;
+        shaders.push_back(shader);
     }
-
-    cout << i << endl;
-
-    cout << shaders[0].content << endl;
 
     return shaders;
 }
 
-unsigned int compileShaders(struct shaderInfo *shaders) {
+unsigned int compileShaders(vector<shaderInfo> shaders) {
     unsigned int shaderProgram = glCreateProgram();
     unsigned int shadersAdrs[2];
 
-    cout << shaders[0].content << endl;
-
-    return 0;
-
-    for (int i = 0; i < 2; i++)//again, future me problem
+    for (int i = 0; i < 2; i++)
     {
         int shaderType = 0;
 
         shaderInfo currentShader = shaders[i];
-
-        return 0;
 
         if (currentShader.type == VERTEX)
             shaderType = GL_VERTEX_SHADER;
@@ -82,6 +65,8 @@ unsigned int compileShaders(struct shaderInfo *shaders) {
         glShaderSource(shader, 1, &c_str, NULL);
         glCompileShader(shader);
 
+        checkForCompilationErrors(shader);
+
         glAttachShader(shaderProgram, shader);
     }
 
@@ -91,4 +76,17 @@ unsigned int compileShaders(struct shaderInfo *shaders) {
         glDeleteShader(shadersAdrs[i]);
 
     return shaderProgram;
+}
+
+void checkForCompilationErrors(unsigned int shaderAdrs)
+{
+    int  success;
+    char infoLog[512];
+    glGetShaderiv(shaderAdrs, GL_COMPILE_STATUS, &success);
+
+    if (!success)
+    {
+        glGetShaderInfoLog(shaderAdrs, 512, NULL, infoLog);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
+    }
 }
