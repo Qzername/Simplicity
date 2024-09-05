@@ -5,7 +5,12 @@
 Window::Window(const char* windowName) {
     window = initializeGlfw(windowName);
 
-    shaderProgram = compileShaders();
+    shaderInfo* shaders = readShaders();
+
+    std::cout << shaders[0].content << std::endl;
+    std::cout << "abc" << endl;
+    return;
+    shaderProgram = compileShaders(shaders);
 }
 
 Window::~Window() {

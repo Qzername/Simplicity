@@ -18,8 +18,8 @@ enum ShaderType {
 
 struct shaderInfo {
     ShaderType type;
-    const char* content;
+    string content;
 };
 
-void readShaders();
-unsigned int compileShaders();
+shaderInfo* readShaders();
+unsigned int compileShaders(shaderInfo* shaders);
