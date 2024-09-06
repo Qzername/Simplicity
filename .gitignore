@@ -1,3 +1,8 @@
+# dont include glad.c, include and lib
+Simplicity/include/
+Simplicity/lib/
+Simplicity/glad.c
+
 # Prerequisites
 *.d
 
