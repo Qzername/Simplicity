@@ -1,20 +1,6 @@
-﻿using System.Runtime.InteropServices;
+﻿using Simplicity.NET;
+using Simplicity.NET.Objects;
 
-[DllImport("./libs/Simplicity.dll")]
-static extern IntPtr createWindow();
-
-[DllImport("./libs/Simplicity.dll")]
-static extern void show(IntPtr window);
-
-[DllImport("./libs/Simplicity.dll")]
-static extern void addDrawable(IntPtr window, IntPtr drawable);
-
-[DllImport("./libs/Simplicity.dll")]
-static extern IntPtr createRectangle(float x, float y, float width, float height);
-
-IntPtr window = createWindow();
-IntPtr rectangle = createRectangle(0.5f, 0.5f, 0.5f, 0.5f);
-
-addDrawable(window, rectangle);
-
-show(window);
+Window window = new Window();
+window.AddDrawable(new Rectangle(0, 0, 0.5f, 0.5f));
+window.Show();
