@@ -25,6 +25,15 @@
     <Filter Include="Source Files\Objects\2D">
       <UniqueIdentifier>{7788ece4-c59d-45dc-8114-b0830da7b10e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Links">
+      <UniqueIdentifier>{0a134980-ce04-4af8-b023-0c85a81aeb0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Links\Objects">
+      <UniqueIdentifier>{84a1d734-1a71-4e8d-a8cc-6bae2d21804e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Links\Objects\2D">
+      <UniqueIdentifier>{fa036650-eb36-4d26-bfce-f9943c49714c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,6 +73,15 @@
     </ClInclude>
     <ClInclude Include="window.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windowLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="mainLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangleLink.h">
+      <Filter>Links\Objects\2D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
