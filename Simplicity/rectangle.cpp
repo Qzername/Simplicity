@@ -2,14 +2,10 @@
 
 #include<iostream>
 
-Rectangle::Rectangle(float x, float y, float width, float height) {
-    position.x = x;
-    position.y = y;
-    position.z = 0;
-
-	this->width = width;
-	this->height = height;
-
+Rectangle::Rectangle(float x, float y, float width, float height) : Drawable(x, y) {
+    this->width = width;
+    this->height = height;
+    
     VAO = GenerateVAO();
 }
 
@@ -27,6 +23,14 @@ unsigned int Rectangle::GenerateVAO() {
         0, 1, 3,  // first Triangle
         1, 2, 3   // second Triangle
     };
+
+    float colors[] = {
+        color.r, color.g, color.b, color.w,
+        color.r, color.g, color.b, color.w,
+        color.r, color.g, color.b, color.w,
+        color.r, color.g, color.b, color.w,
+    };
+    
     unsigned int VBO, VAO, EBO;
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);

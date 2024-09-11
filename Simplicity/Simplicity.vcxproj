@@ -134,6 +134,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="color.cpp" />
+    <ClCompile Include="drawable.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="initializationTools.cpp" />
     <ClCompile Include="main.cpp" />
@@ -142,6 +144,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="color.h" />
     <ClInclude Include="drawable.h" />
     <ClInclude Include="initializationTools.h" />
     <ClInclude Include="mainLink.h" />
