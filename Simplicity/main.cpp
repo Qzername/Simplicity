@@ -11,8 +11,8 @@ int main()
     Rectangle rect(0.20f,0.20f,0.5f,0.5f);
     Rectangle rect2(-1.0f, -1.0f, 0.1f, 0.1f);
 
-    Color red(1.0f,0.0f,0.0f);
-    rect.color = red;
+    rect.color = Color(1.0f, 0.0f, 0.0f);
+    rect2.color = Color(0.0f, 0.0f, 1.0f);
 
     window.addDrawable(&rect);
     window.addDrawable(&rect2);

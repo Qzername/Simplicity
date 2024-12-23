@@ -10,5 +10,5 @@ public:
 
 	Drawable(float x, float y);
 
-	virtual void Render() = 0;
+	virtual void Render(unsigned int shaderProgram) = 0;
 };

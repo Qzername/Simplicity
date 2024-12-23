@@ -21,7 +21,7 @@ void Window::show() {
         glUseProgram(shaderProgram);
 
         for (auto d : objectList)
-            d->Render();
+            d->Render(shaderProgram);
 
         glBindVertexArray(0);
 
