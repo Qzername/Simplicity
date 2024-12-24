@@ -33,9 +33,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="initializationTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -53,6 +50,12 @@
     </ClCompile>
     <ClCompile Include="color.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="single-file-libs\glad.c">
+      <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="rectangle.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="single-file-libs\stb_image.h">
+      <Filter>Resource Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
