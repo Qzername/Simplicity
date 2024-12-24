@@ -142,6 +142,7 @@
     <ClCompile Include="shaderCompiling.cpp" />
     <ClCompile Include="single-file-libs\glad.c" />
     <ClCompile Include="texture2D.cpp" />
+    <ClCompile Include="transform.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="shaderCompiling.h" />
     <ClInclude Include="single-file-libs\stb_image.h" />
     <ClInclude Include="texture2D.h" />
+    <ClInclude Include="transform.h" />
     <ClInclude Include="vector3.h" />
     <ClInclude Include="window.h" />
     <ClInclude Include="windowLink.h" />

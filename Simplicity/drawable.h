@@ -1,11 +1,12 @@
 #pragma once
 #include "vector3.h"
 #include "color.h"
+#include "transform.h"
 
 class Drawable
 {
 public:
-	vector3 position;
+	Transform transform;
 	Color color;
 
 	Drawable(float x, float y);

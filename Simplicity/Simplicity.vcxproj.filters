@@ -57,6 +57,9 @@
     <ClCompile Include="single-file-libs\glad.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="single-file-libs\stb_image.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

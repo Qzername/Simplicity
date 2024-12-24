@@ -1,5 +1,9 @@
 #include "rectangle.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <iostream>
 
 Rectangle::Rectangle(float x, float y, float width, float height) : Drawable(x, y) {
@@ -10,8 +14,8 @@ Rectangle::Rectangle(float x, float y, float width, float height) : Drawable(x, 
 }
 
 unsigned int Rectangle::GenerateVAO() {
-    int x = position.x;
-    int y = position.y;
+    int x = transform.position.x;
+    int y = transform.position.y;
 
     float vertices[] = { //pos + texture cords
         x+width,  y+height, 0.0f, 1.0f, 1.0f,  // top right 
@@ -52,8 +56,24 @@ unsigned int Rectangle::GenerateVAO() {
 
 void Rectangle::Render(unsigned int shaderProgram) {
 
+    //color
     int vertexColorLocation = glGetUniformLocation(shaderProgram, "color");
     glUniform4f(vertexColorLocation,color.r, color.g, color.b, color.w);
+    
+    //transform
+    glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+    
+    glm::vec3 glmPos = glm::vec3(transform.position.x, transform.position.y, transform.position.z);
+    transformMatrix = glm::translate(transformMatrix, glmPos);
+
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+
+    unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+    glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));
+
+    //draw
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
