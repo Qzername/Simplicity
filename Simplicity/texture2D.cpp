@@ -4,7 +4,7 @@
 #include <stb_image/stb_image.h>
 #include <iostream>
 
-Texture2D::Texture2D()
+Texture2D::Texture2D(const char* filename)
 {
 	glGenTextures(1, &this->texture);
 	glBindTexture(GL_TEXTURE_2D, this->texture);
@@ -17,7 +17,7 @@ Texture2D::Texture2D()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     int width, height, nrChannels;
-    unsigned char* data = stbi_load("PATH-TO-TEXTURE", &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
 
     if (data)
     {

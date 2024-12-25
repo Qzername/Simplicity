@@ -5,7 +5,7 @@ class Texture2D {
 	unsigned int texture;
 
 public:
-	Texture2D();
+	Texture2D(const char* filename);
 
 	void SetActive();
 };

@@ -138,11 +138,11 @@
     <ClCompile Include="color.cpp" />
     <ClCompile Include="cube.cpp" />
     <ClCompile Include="drawable.cpp" />
+    <ClCompile Include="include\glad\glad.c" />
     <ClCompile Include="initializationTools.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="shaderCompiling.cpp" />
-    <ClCompile Include="single-file-libs\glad.c" />
     <ClCompile Include="texture2D.cpp" />
     <ClCompile Include="transform.cpp" />
     <ClCompile Include="window.cpp" />

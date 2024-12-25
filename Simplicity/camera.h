@@ -8,6 +8,8 @@
 #include "transform.h"
 
 class Camera {
+	unsigned int shaderProgramID;
+
 public:
 	Transform transform;
 	glm::vec3 cameraFront, cameraUp;
@@ -15,7 +17,4 @@ public:
 
 	void Config(unsigned int shaderProgramID);
 	void CalculateTransformations();
-
-private:
-	unsigned int shaderProgramID;
 };
