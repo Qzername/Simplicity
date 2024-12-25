@@ -134,7 +134,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="cube.cpp" />
     <ClCompile Include="drawable.cpp" />
     <ClCompile Include="initializationTools.cpp" />
     <ClCompile Include="main.cpp" />
@@ -146,7 +148,9 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
+    <ClInclude Include="cube.h" />
     <ClInclude Include="drawable.h" />
     <ClInclude Include="initializationTools.h" />
     <ClInclude Include="mainLink.h" />

@@ -8,6 +8,7 @@
 #include "initializationTools.h"
 #include "shaderCompiling.h"
 #include "drawable.h"
+#include "camera.h"
 
 class Window
 {
@@ -17,6 +18,8 @@ class Window
 	unsigned int shaderProgram;
 
 public:
+	Camera camera;
+
 	Window(const char* windowName);
 	~Window();
 

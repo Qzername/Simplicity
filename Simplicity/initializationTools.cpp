@@ -38,6 +38,8 @@ GLFWwindow* initializeGlfw(const char* windowTitle)
         throw ("ERROR.");
     }
 
+    glEnable(GL_DEPTH_TEST);
+
     return window;
 }
 

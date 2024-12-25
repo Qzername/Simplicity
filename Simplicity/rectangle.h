@@ -7,7 +7,6 @@ class Rectangle : public Drawable
 {
 public:
 	float width, height;
-	Color color;
 
 private:
 	unsigned int VAO;
