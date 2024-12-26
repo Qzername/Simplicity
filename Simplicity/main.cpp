@@ -11,32 +11,18 @@
 Window window("Simplicity test window");
 
 bool firstMouse = true;
-float yaw = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
-float pitch = 0.0f;
 float lastX = 800.0f / 2.0;
 float lastY = 600.0 / 2.0;
-float fov = 45.0f;
 
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-
-// timing
-float deltaTime = 144.0f/10000.0f;	// time between current frame and last frame
-float lastFrame = 0.0f;
-
-void processInput(GLFWwindow* windowID);
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn);
+void processKeyboardInput();
+void processMouseInput(double xposIn, double yposIn);
 
 int main()
 {
     window.camera.transform.position = vector3(0, 0, -2);
 
-    window.addKeyboardCallback(processInput);
-    window.addCursorCallback(mouse_callback);
-
- /*   Texture2D texture = Texture2D("<path to file>");
-    texture.SetActive();*/
+    /*Texture2D texture = Texture2D("");
+    Texture2D texture2 = Texture2D("");*/
 
     Rectangle rect(0.20f,0.20f,0.5f,0.5f);
     rect.transform.rotation = vector3(0.5f, 0.5f, 0.0f);
@@ -47,43 +33,57 @@ int main()
     Cube cube(vector3(0.0f,0.0f,-1.0f), 1.0f);
     cube.transform.rotation = vector3(0.5f, 0.5f, 0.5f);
 
-    window.addDrawable(&rect);
-    window.addDrawable(&rect2);
-    window.addDrawable(&cube);
+	while (!window.shouldClose())
+	{
+        processKeyboardInput();
 
-    window.show();
+		vector3 mousePos = window.getCursorPos();
+		processMouseInput(mousePos.x, mousePos.y);
+        
+        window.frameCalculations();
+		window.clear(Color(0.2f, 0.3f, 0.3f, 1.0f));
+
+		//texture.SetActive();
+		window.draw(&rect);
+		window.draw(&rect2);
+
+		//texture2.SetActive();
+		window.draw(&cube);
+
+		window.render();
+	}
 
     return 0;
 }
 
-void processInput(GLFWwindow* windowID)
+void processKeyboardInput()
 {
-    if (glfwGetKey(windowID, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(windowID, true);
+    if (window.getKey(GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        window.close();
 
-    if (glfwGetKey(windowID, GLFW_KEY_G) == GLFW_PRESS)
-        glfwSetInputMode(windowID, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    if (window.getKey(GLFW_KEY_G) == GLFW_PRESS)
+        window.setMouseInputMode(GLFW_CURSOR_DISABLED);
 
-    if (glfwGetKey(windowID, GLFW_KEY_H) == GLFW_PRESS)
-        glfwSetInputMode(windowID, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    if (window.getKey(GLFW_KEY_H) == GLFW_PRESS)
+        window.setMouseInputMode(GLFW_CURSOR_NORMAL);
 
-    float cameraSpeed = static_cast<float>(2.5 * deltaTime);
-    if (glfwGetKey(windowID, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += cameraSpeed * cameraFront;
-    if (glfwGetKey(windowID, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraSpeed * cameraFront;
-    if (glfwGetKey(windowID, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-    if (glfwGetKey(windowID, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    float cameraSpeed = static_cast<float>(2.5 * window.deltaTime);
+    vector3 cameraPos = vector3(0, 0, 0);
 
-    window.camera.transform.position = vector3(cameraPos.x, cameraPos.y, cameraPos.z);
-    window.camera.cameraFront = cameraFront;
-    window.camera.cameraUp = cameraUp;
+    if (window.getKey(GLFW_KEY_W) == GLFW_PRESS)
+        cameraPos += window.camera.cameraFront * cameraSpeed;
+    if (window.getKey(GLFW_KEY_S) == GLFW_PRESS)
+        cameraPos -= window.camera.cameraFront * cameraSpeed;
+    if (window.getKey(GLFW_KEY_A) == GLFW_PRESS)
+        cameraPos -= window.camera.cameraRight * cameraSpeed;
+    if (window.getKey(GLFW_KEY_D) == GLFW_PRESS)
+        cameraPos += window.camera.cameraRight * cameraSpeed;
+
+    window.camera.transform.position = window.camera.transform.position + vector3(cameraPos.x, cameraPos.y, cameraPos.z);
 }
 
 
-void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
+void processMouseInput(double xposIn, double yposIn)
 {
     float xpos = static_cast<float>(xposIn);
     float ypos = static_cast<float>(yposIn);
@@ -104,18 +104,6 @@ void mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     xoffset *= sensitivity;
     yoffset *= sensitivity;
 
-    yaw += xoffset;
-    pitch += yoffset;
-
-    // make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-
-    glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(front);
+    window.camera.transform.rotation.z += xoffset;
+    window.camera.transform.rotation.y += yoffset;
 }

@@ -11,8 +11,11 @@ class Camera {
 	unsigned int shaderProgramID;
 
 public:
+	vector3 cameraUp = vector3(0.0f, 1.0f, 0.0f);
+	vector3 cameraFront = vector3(0.0f, 0.0f, -1.0f);
+	vector3 cameraRight = vector3(1.0f, 0.0f, 0.0f);
+
 	Transform transform;
-	glm::vec3 cameraFront, cameraUp;
 	float FOV = 45.0f;
 
 	void Config(unsigned int shaderProgramID);

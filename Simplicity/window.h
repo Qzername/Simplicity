@@ -12,26 +12,27 @@
 
 class Window
 {
-	std::list<Drawable*> objectList;
-
 	GLFWwindow* window;
 	unsigned int shaderProgram;
 
-	//callbacks
-	std::function<void(GLFWwindow*)> keyboardCallback;
+	float lastFrame = 0.0f;	
 
 public:
 	Camera camera;
+	float deltaTime = 0.0f;
 
 	Window(const char* windowName);
 	~Window();
 
-	void addDrawable(Drawable* drawable);
+	bool shouldClose();
+	void frameCalculations();
+	void clear(Color color);
+	void draw(Drawable* drawable);
+	void render();
 
-	void show();
+	int getKey(int key);
+	vector3 getCursorPos();
 
-	//callbacks
-	void addCursorCallback(GLFWcursorposfun cursorCallback);
-	void addScrollCallback(GLFWscrollfun scrollCallback);
-	void addKeyboardCallback(std::function<void(GLFWwindow*)> keyboardCallback);
+	void setMouseInputMode(int value);
+	void close();
 };
