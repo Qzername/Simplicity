@@ -4,14 +4,14 @@ namespace Simplicity.NET
 {
     public class Window
     {
-        [DllImport("./libs/Simplicity.dll")]
+        [DllImport(LibConsts.LibPath)]
         static extern IntPtr createWindow();
 
-        [DllImport("./libs/Simplicity.dll")]
-        static extern void show(IntPtr window);
+        [DllImport(LibConsts.LibPath)]
+        static extern bool shouldClose(IntPtr window);
 
-        [DllImport("./libs/Simplicity.dll")]
-        static extern void addDrawable(IntPtr window, IntPtr drawable);
+        [DllImport(LibConsts.LibPath)]
+        static extern void render(IntPtr window);
 
         IntPtr window;
 
@@ -20,7 +20,7 @@ namespace Simplicity.NET
             window = createWindow();
         }
 
-        public void Show() => show(window);
-        public void AddDrawable(Drawable drawable) => addDrawable(window, drawable.GetPtr());
+        public bool ShouldClose() => shouldClose(window);
+        public void Render() => render(window);
     }
 }

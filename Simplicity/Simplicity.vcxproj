@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -140,7 +140,6 @@
     <ClCompile Include="drawable.cpp" />
     <ClCompile Include="include\glad\glad.c" />
     <ClCompile Include="initializationTools.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="shaderCompiling.cpp" />
     <ClCompile Include="texture2D.cpp" />
@@ -150,10 +149,16 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
+    <ClInclude Include="colorLink.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="cube.h" />
     <ClInclude Include="drawable.h" />
     <ClInclude Include="initializationTools.h" />
-    <ClInclude Include="mainLink.h" />
+    <ClInclude Include="mainLink.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="rectangle.h" />
     <ClInclude Include="rectangleLink.h" />
     <ClInclude Include="shaderCompiling.h" />
