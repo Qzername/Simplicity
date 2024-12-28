@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Simplicity.NET.Objects
 {
-    public class Rectangle : Drawable
+    public class Cube : Drawable
     {
         [DllImport(LibConsts.LibPath)]
-        static extern IntPtr createRectangle(float x, float y, float width, float height);
+        static extern IntPtr Cube_create(Vector3 position);
 
-        public Rectangle(float x, float y, float width, float height)
+        public Cube(Vector3 position) : base(Cube_create(position))
         {
-            drawable = createRectangle(x, y, width, height);
         }
     }
 }
