@@ -1,26 +1,36 @@
 #pragma once
 
+#include <string.h>
 #include "window.h"
 #include "camera.h"
 
 extern "C" {
-	__declspec(dllexport) Camera* getCamera(Window* window)
+	__declspec(dllexport) float Camera_getFOV(Camera* camera)
 	{
-		return &window->camera;
+		return camera->FOV;
 	}
 
-	__declspec(dllexport) void setCameraFOV(Camera* camera, float FOV)
+	__declspec(dllexport) void Camera_setFOV(Camera* camera, float FOV)
 	{
 		camera->FOV = FOV;
 	}
 
-	__declspec(dllexport) void setCameraPosition(Camera* camera, vector3 position)
+	__declspec(dllexport) Transform* Camera_getTransform(Camera* camera)
 	{
-		camera->transform.position = position;
+		return &camera->transform;
 	}
 
-	__declspec(dllexport) void setCameraRotation(Camera* camera, vector3 rotation)
+	__declspec(dllexport) vector3 Camera_getDirections(Camera* camera, const char* directionName)
 	{
-		camera->transform.rotation = rotation;
+		std::string property(directionName);
+
+		if (property == "cameraUp")
+			return camera->cameraUp;
+		else if (property == "cameraFront")
+			return camera->cameraFront;
+		else if (property == "cameraRight")
+			return camera->cameraRight;
+		else
+			throw std::invalid_argument("Invalid direction name");
 	}
 }

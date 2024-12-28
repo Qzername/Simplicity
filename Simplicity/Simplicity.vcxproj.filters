@@ -25,9 +25,6 @@
     <Filter Include="Links\Objects">
       <UniqueIdentifier>{84a1d734-1a71-4e8d-a8cc-6bae2d21804e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Links\Objects\2D">
-      <UniqueIdentifier>{fa036650-eb36-4d26-bfce-f9943c49714c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="initializationTools.cpp">
@@ -83,9 +80,6 @@
     <ClInclude Include="window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="rectangleLink.h">
-      <Filter>Links\Objects\2D</Filter>
-    </ClInclude>
     <ClInclude Include="color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -111,6 +105,21 @@
       <Filter>Links</Filter>
     </ClInclude>
     <ClInclude Include="cameraLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="rectangleLink.h">
+      <Filter>Links\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="cubeLink.h">
+      <Filter>Links\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="transformLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="drawableLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="texture2DLink.h">
       <Filter>Links</Filter>
     </ClInclude>
   </ItemGroup>

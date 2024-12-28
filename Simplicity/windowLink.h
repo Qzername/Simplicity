@@ -2,52 +2,65 @@
 #include "window.h"
 
 extern "C" {
-	__declspec(dllexport) Window* createWindow(const char* windowName)
+	// fields and properties
+	__declspec(dllexport) Camera* Window_getCamera(Window* window)
+	{
+		return &window->camera;
+	}
+
+	__declspec(dllexport) float Window_getDeltaTime(Window* window)
+	{
+		return window->deltaTime;
+	}
+
+	//constructors
+	__declspec(dllexport) Window* Window_create(const char* windowName)
 	{
 		return new Window(windowName);
 	}
 
-	__declspec(dllexport) bool shouldClose(Window * window)
+	//functions
+	__declspec(dllexport) bool Window_shouldClose(Window * window)
 	{
 		return window->shouldClose();
 	}
 
-	__declspec(dllexport) void frameCalculations(Window* window)
+	__declspec(dllexport) void Window_frameCalculations(Window* window)
 	{
 		window->frameCalculations();
 	}
 
-	__declspec(dllexport) void clear(Window* window, Color color)
+	__declspec(dllexport) void Window_clear(Window* window, Color color)
 	{
 		window->clear(color);
 	}
 
-	__declspec(dllexport) void draw(Window* window, Drawable* drawable)
+	__declspec(dllexport) void Window_draw(Window* window, Drawable* drawable)
 	{
 		window->draw(drawable);
 	}
 
-	__declspec(dllexport) void render(Window* window)
+	__declspec(dllexport) void Window_render(Window* window)
 	{
 		window->render();
 	}
 
-	__declspec(dllexport) int getKey(Window* window, int key)
+	__declspec(dllexport) int Window_getKey(Window* window, int key)
 	{
 		return window->getKey(key);
 	}
 
-	__declspec(dllexport) vector3 getCursorPos(Window* window)
+	__declspec(dllexport) vector3 Window_getCursorPos(Window* window)
 	{
 		return window->getCursorPos();
 	}
 
-	__declspec(dllexport) void setMouseInputMode(Window* window, int value)
+	__declspec(dllexport) void Window_setMouseInputMode(Window* window, int value)
 	{
 		window->setMouseInputMode(value);
 	}
 
-	__declspec(dllexport) void close(Window* window)
+	__declspec(dllexport) void Window_close(Window* window)
 	{
 		window->close();
 	}

@@ -5,9 +5,7 @@
 
 class Cube : public Drawable {
 public:
-	float size;
-
-	Cube(vector3 position, float size);
+	Cube(vector3 position);
 
 	void Render(unsigned int shaderProgram);
 

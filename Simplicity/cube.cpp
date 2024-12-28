@@ -6,9 +6,8 @@
 
 #include <iostream>
 
-Cube::Cube(vector3 position, float size) : Drawable(position.x, position.y) {
+Cube::Cube(vector3 position) : Drawable(position.x, position.y) {
     transform.position = position;
-    this->size = size;
 
     VAO = GenerateVAO();
 }
