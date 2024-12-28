@@ -2,9 +2,9 @@
 #include "window.h"
 
 extern "C" {
-	__declspec(dllexport) Window* createWindow()
+	__declspec(dllexport) Window* createWindow(const char* windowName)
 	{
-		return new Window("window");
+		return new Window(windowName);
 	}
 
 	__declspec(dllexport) bool shouldClose(Window * window)

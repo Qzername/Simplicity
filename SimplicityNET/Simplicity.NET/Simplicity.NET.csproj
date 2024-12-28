@@ -14,9 +14,6 @@
     <None Update="SimplicityLib\Simplicity.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="SimplicityLib\Simplicity.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

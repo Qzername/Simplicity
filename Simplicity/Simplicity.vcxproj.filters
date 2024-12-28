@@ -63,6 +63,9 @@
     <ClCompile Include="include\glad\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">
@@ -79,12 +82,6 @@
     </ClInclude>
     <ClInclude Include="window.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="windowLink.h">
-      <Filter>Links</Filter>
-    </ClInclude>
-    <ClInclude Include="mainLink.h">
-      <Filter>Links</Filter>
     </ClInclude>
     <ClInclude Include="rectangleLink.h">
       <Filter>Links\Objects\2D</Filter>
@@ -111,6 +108,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="colorLink.h">
+      <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="windowLink.h">
       <Filter>Links</Filter>
     </ClInclude>
   </ItemGroup>

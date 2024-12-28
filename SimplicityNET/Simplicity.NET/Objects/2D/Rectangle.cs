@@ -9,7 +9,7 @@ namespace Simplicity.NET.Objects
 {
     public class Rectangle : Drawable
     {
-        [DllImport("./libs/Simplicity.dll")]
+        [DllImport(LibConsts.LibPath)]
         static extern IntPtr createRectangle(float x, float y, float width, float height);
 
         public Rectangle(float x, float y, float width, float height)
