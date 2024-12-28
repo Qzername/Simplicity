@@ -107,10 +107,10 @@
     <ClInclude Include="camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="colorLink.h">
+    <ClInclude Include="windowLink.h">
       <Filter>Links</Filter>
     </ClInclude>
-    <ClInclude Include="windowLink.h">
+    <ClInclude Include="cameraLink.h">
       <Filter>Links</Filter>
     </ClInclude>
   </ItemGroup>
