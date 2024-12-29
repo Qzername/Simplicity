@@ -84,7 +84,7 @@ void Cube::Render(unsigned int shaderProgram) {
 
     //color
     int vertexColorLocation = glGetUniformLocation(shaderProgram, "color");
-    glUniform4f(vertexColorLocation, color.r, color.g, color.b, color.w);
+    glUniform4f(vertexColorLocation, color.r/255, color.g/255, color.b/255, color.w/255);
 
     //transform
     glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -92,9 +92,9 @@ void Cube::Render(unsigned int shaderProgram) {
     glm::vec3 glmPos = glm::vec3(transform.position.x, transform.position.y, transform.position.z);
     transformMatrix = glm::translate(transformMatrix, glmPos);
 
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.x / 90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.y / 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, transform.rotation.z / 90.0f, glm::vec3(0.0f, 0.0f, 1.0f));
 
     unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));

@@ -8,19 +8,18 @@ float lastY = 600.0f / 2.0f;
 Window window = new("Basic window with basic stuff");
 
 window.Camera.Transform.Position = new Vector3(0, 0, 2);
-//just noticed that camera rotation is in angles, where cube and rectangle are in range from 0.0f to 1.0f
 window.Camera.Transform.Rotation = new Vector3(0, 0f, -90);
 
 Rectangle rect = new(0.2f, 0.2f, 0.5f, 0.5f);
-rect.Transform.Rotation = new Vector3(0.5f, 0.5f, 0.0f);
+rect.Transform.Rotation = new Vector3(45, 45, 45);
 
 Rectangle rect2 = new(-0.5f, -0.5f, 0.1f, 0.1f);
-rect2.Color = new Color(0.2f, 0.2f, 1);
+rect2.Color = new Color(50, 50, 255);
 
 Cube cube = new(new Vector3(0.2f, 0, -1));
-cube.Transform.Rotation = new Vector3(0.5f, 0.5f, 0.5f);
+cube.Transform.Rotation = new Vector3(45,45,45);
 
-cube.Color = new Color(0.2f, 0.2f, 1);
+cube.Color = new Color(50, 50, 255);
 
 Console.WriteLine(Directory.GetCurrentDirectory());
 
@@ -35,7 +34,7 @@ while (!window.ShouldClose())
     ProcessMouseInput(cursorPos.X, cursorPos.Y);
 
     window.FrameCalculations();
-    window.Clear(new Color(0.2f, 0.3f, 0.3f));
+    window.Clear(new Color(50, 75, 75));
 
     texture.SetActive();
     window.Draw(rect);

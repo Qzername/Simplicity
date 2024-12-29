@@ -32,7 +32,7 @@ void Window::frameCalculations() {
 }
 
 void Window::clear(Color color) {
-	glClearColor(color.r, color.g, color.b, 1.0f);
+	glClearColor(color.r/255, color.g/255, color.b/255, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

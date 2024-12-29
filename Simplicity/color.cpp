@@ -4,10 +4,10 @@ Color::Color(float r, float g, float b) {
 	this->r = r;
 	this->g = g;
 	this->b = b;
-	this->w = 1.0f;
+	this->w = 255;
 }
 
-Color::Color() : Color(1.0f, 1.0f, 1.0f) {
+Color::Color() : Color(255, 255, 255) {
 
 }
 
