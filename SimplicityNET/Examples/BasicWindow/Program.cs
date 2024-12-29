@@ -2,8 +2,8 @@
 using Simplicity.NET.Objects;
 
 bool firstMouse = true;
-float lastX = 800.0f / 2.0f;
-float lastY = 600.0f / 2.0f;
+float lastX = 800 / 2;
+float lastY = 600 / 2;
 
 Window window = new("Basic window with basic stuff");
 
@@ -26,7 +26,6 @@ Console.WriteLine(Directory.GetCurrentDirectory());
 Texture2D texture = new(Directory.GetCurrentDirectory() + "/1.jpg");
 Texture2D texture2 = new(Directory.GetCurrentDirectory() + "/2.jpg");
 
-
 while (!window.ShouldClose())
 {
     ProcessKeyboardInput();
@@ -47,31 +46,27 @@ while (!window.ShouldClose())
 }
 
 // CAMERA MOVEMENT
-// TODO: add enum with keys, and key statuses
 void ProcessKeyboardInput()
 {
-    //if esc is pressed
-    if(window.GetKey(256) == 1)
+    if(window.GetKey(KeyCode.Escape) == KeyStatus.Pressed)
         window.Close();
 
-    //if g is pressed
-    if (window.GetKey(71) == 1)
-        window.SetMouseInputMode(0x00034003); //disable cursor
+    if (window.GetKey(KeyCode.G) == KeyStatus.Pressed)
+        window.SetMouseInputMode(MouseInputMode.Disable);
 
-    //if h is pressed
-    if (window.GetKey(72) == 1)
-        window.SetMouseInputMode(0x00034001); //enable cursor
+    if (window.GetKey(KeyCode.H) == KeyStatus.Pressed)
+        window.SetMouseInputMode(MouseInputMode.Enable);
 
     float cameraSpeed = 2.5f * window.DeltaTime;
     Vector3 cameraPos = new Vector3(0, 0, 0);
 
-    if (window.GetKey(87) == 1) //w
+    if (window.GetKey(KeyCode.W) == KeyStatus.Pressed) 
         cameraPos += window.Camera.CameraFront * cameraSpeed;
-    if (window.GetKey(83) == 1) //s
+    if (window.GetKey(KeyCode.S) == KeyStatus.Pressed)
         cameraPos -= window.Camera.CameraFront * cameraSpeed;
-    if (window.GetKey(65) == 1) //a
+    if (window.GetKey(KeyCode.A) == KeyStatus.Pressed)
         cameraPos -= window.Camera.CameraRight * cameraSpeed;
-    if (window.GetKey(68) == 1) //d
+    if (window.GetKey(KeyCode.D) == KeyStatus.Pressed)
         cameraPos += window.Camera.CameraRight * cameraSpeed;
   
     window.Camera.Transform.Position = window.Camera.Transform.Position + cameraPos;

@@ -59,9 +59,9 @@ namespace Simplicity.NET
         public void Clear(Color color) => Window_clear(_window, color);
         public void Draw(Drawable drawable) => Window_draw(_window, drawable.GetPtr());
         public void Render() => Window_render(_window);
-        public int GetKey(int key) => Window_getKey(_window, key);
+        public KeyStatus GetKey(KeyCode key) => (KeyStatus)Window_getKey(_window, Convert.ToInt32(key));
         public Vector3 GetCursorPos() => Window_getCursorPos(_window);
-        public void SetMouseInputMode(int value) => Window_setMouseInputMode(_window, value);
+        public void SetMouseInputMode(MouseInputMode mode) => Window_setMouseInputMode(_window, Convert.ToInt32(mode));
         public void Close() => Window_close(_window);
     }
 }
