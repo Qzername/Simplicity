@@ -33,5 +33,9 @@ namespace Simplicity.NET
             get => Transform_getProperty(_transform, "rotation");
             set => Transform_setProperty(_transform, "rotation", value);
         }
+
+        public Vector3 Forward => Transform_getProperty(_transform, "forward");
+        public Vector3 Right => Transform_getProperty(_transform, "right");
+        public Vector3 Up => Transform_getProperty(_transform, "up");
     }
 }

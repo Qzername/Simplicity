@@ -15,8 +15,6 @@ namespace Simplicity.NET
         static extern float Camera_getFOV(IntPtr camera);
         [DllImport(LibConsts.LibPath)]
         static extern void Camera_setFOV(IntPtr camera, float FOV);
-        [DllImport(LibConsts.LibPath)]
-        static extern Vector3 Camera_getDirections(IntPtr camera, string directionName);
 
         IntPtr _camera;
 
@@ -28,10 +26,6 @@ namespace Simplicity.NET
             get => Camera_getFOV(_camera);
             set => Camera_setFOV(_camera, value);
         }
-
-        public Vector3 CameraUp => Camera_getDirections(_camera, "cameraUp");
-        public Vector3 CameraFront => Camera_getDirections(_camera, "cameraFront");
-        public Vector3 CameraRight => Camera_getDirections(_camera, "cameraRight");
 
         internal Camera(IntPtr camera)
         {

@@ -7,8 +7,7 @@ float lastY = 600 / 2;
 
 Window window = new("Basic window with basic stuff");
 
-window.Camera.Transform.Position = new Vector3(0, 0, 2);
-window.Camera.Transform.Rotation = new Vector3(0, 0f, -90);
+window.Camera.Transform.Position = new Vector3(0, 0, -2);
 
 Rectangle rect = new(0.2f, 0.2f, 0.5f, 0.5f);
 rect.Transform.Rotation = new Vector3(45, 45, 45);
@@ -16,7 +15,7 @@ rect.Transform.Rotation = new Vector3(45, 45, 45);
 Rectangle rect2 = new(-0.5f, -0.5f, 0.1f, 0.1f);
 rect2.Color = new Color(50, 50, 255);
 
-Cube cube = new(new Vector3(0.2f, 0, -1));
+Cube cube = new(new Vector3(0.2f, 0, 1));
 cube.Transform.Rotation = new Vector3(45,45,45);
 
 cube.Color = new Color(50, 50, 255);
@@ -61,14 +60,19 @@ void ProcessKeyboardInput()
     Vector3 cameraPos = new Vector3(0, 0, 0);
 
     if (window.GetKey(KeyCode.W) == KeyStatus.Pressed) 
-        cameraPos += window.Camera.CameraFront * cameraSpeed;
+        cameraPos += window.Camera.Transform.Forward * cameraSpeed;
     if (window.GetKey(KeyCode.S) == KeyStatus.Pressed)
-        cameraPos -= window.Camera.CameraFront * cameraSpeed;
+        cameraPos -= window.Camera.Transform.Forward * cameraSpeed;
     if (window.GetKey(KeyCode.A) == KeyStatus.Pressed)
-        cameraPos -= window.Camera.CameraRight * cameraSpeed;
+        cameraPos += window.Camera.Transform.Right * cameraSpeed;
     if (window.GetKey(KeyCode.D) == KeyStatus.Pressed)
-        cameraPos += window.Camera.CameraRight * cameraSpeed;
-  
+        cameraPos -= window.Camera.Transform.Right * cameraSpeed;
+
+    if(window.GetKey(KeyCode.Space) == KeyStatus.Pressed)
+        cameraPos += window.Camera.Transform.Up * cameraSpeed;
+    if (window.GetKey(KeyCode.LeftShift) == KeyStatus.Pressed)
+        cameraPos -= window.Camera.Transform.Up * cameraSpeed;
+
     window.Camera.Transform.Position = window.Camera.Transform.Position + cameraPos;
 }
 
@@ -81,7 +85,7 @@ void ProcessMouseInput(float xpos, float ypos)
         firstMouse = false;
     }
 
-    float xoffset = xpos - lastX;
+    float xoffset = lastX - xpos;
     float yoffset = lastY - ypos; 
 
     lastX = xpos;
@@ -91,5 +95,5 @@ void ProcessMouseInput(float xpos, float ypos)
     xoffset *= sensitivity;
     yoffset *= sensitivity;
 
-    window.Camera.Transform.Rotation = window.Camera.Transform.Rotation + new Vector3(0, yoffset, xoffset);
+    window.Camera.Transform.Rotation = window.Camera.Transform.Rotation + new Vector3(-yoffset, xoffset, 0);
 }

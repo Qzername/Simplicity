@@ -33,5 +33,10 @@ namespace Simplicity.NET
         {
             return new Vector3(a.X * b, a.Y * b, a.Z * b);
         }
+
+        public override string ToString()
+        {
+            return $"X: {X}, Y: {Y}, Z: {Z}";
+        }
     }
 }
