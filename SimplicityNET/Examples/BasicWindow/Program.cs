@@ -20,8 +20,6 @@ cube.Transform.Rotation = new Vector3(45,45,45);
 
 cube.Color = new Color(50, 50, 255);
 
-Console.WriteLine(Directory.GetCurrentDirectory());
-
 Texture2D texture = new(Directory.GetCurrentDirectory() + "/1.jpg");
 Texture2D texture2 = new(Directory.GetCurrentDirectory() + "/2.jpg");
 
