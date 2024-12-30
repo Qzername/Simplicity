@@ -3,8 +3,8 @@
 Simplicity is a graphics library for C# with the goal of being as straightforward as possible. 
 The library aims to minimize the lines of code required to draw 2D/3D objects on the screen.
 
-[!WARNING]
-This project is still very much work in progress, therefore expect a lot of changes between versions, bugs and missing features
+> [!WARNING]
+> This project is still very much work in progress, therefore expect a lot of changes between versions, bugs and missing features
 
 ### Setup Instructions:
 Download Simplicity.NET.dll and reference it in your project.
