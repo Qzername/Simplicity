@@ -19,18 +19,4 @@ extern "C" {
 	{
 		return &camera->transform;
 	}
-
-	__declspec(dllexport) vector3 Camera_getDirections(Camera* camera, const char* directionName)
-	{
-		std::string property(directionName);
-
-		if (property == "cameraUp")
-			return camera->cameraUp;
-		else if (property == "cameraFront")
-			return camera->cameraFront;
-		else if (property == "cameraRight")
-			return camera->cameraRight;
-		else
-			throw std::invalid_argument("Invalid direction name");
-	}
 }

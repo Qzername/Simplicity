@@ -7,14 +7,16 @@
 #include <iostream>
 
 Cube::Cube(vector3 position) : Drawable(position.x, position.y) {
-    transform.position = position;
+    transform.setPosition(position);
 
     VAO = GenerateVAO();
 }
 
 unsigned int Cube::GenerateVAO() {
-    int x = transform.position.x;
-    int y = transform.position.y;
+	vector3 position = transform.getPosition();
+
+    int x = position.x;
+    int y = position.y;
 
     float vertices[] = {
         //pos + texture data
@@ -89,12 +91,15 @@ void Cube::Render(unsigned int shaderProgram) {
     //transform
     glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 
-    glm::vec3 glmPos = glm::vec3(transform.position.x, transform.position.y, transform.position.z);
+	vector3 position = transform.getPosition();
+	vector3 rotation = transform.getRotation();
+
+    glm::vec3 glmPos = glm::vec3(position.x, position.y, position.z);
     transformMatrix = glm::translate(transformMatrix, glmPos);
 
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.x / 90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.y / 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, transform.rotation.z / 90.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+    transformMatrix = glm::rotate(transformMatrix, rotation.x / 90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, rotation.y / 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
+    transformMatrix = glm::rotate(transformMatrix, rotation.z / 90.0f, glm::vec3(0.0f, 0.0f, 1.0f));
 
     unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));

@@ -10,9 +10,15 @@ extern "C" {
 		std::string property(name);
 
 		if (property == "position")
-			return transform->position;
+			return transform->getPosition();
 		else if (property == "rotation")
-			return transform->rotation;
+			return transform->getRotation();
+		else if (property == "forward")
+			return transform->getForward();
+		else if (property == "right")
+			return transform->getRight();
+		else if (property == "up")
+			return transform->getUp();
 		else
 			throw std::invalid_argument("Invalid property name");
 	}
@@ -22,9 +28,9 @@ extern "C" {
 		std::string property(name);
 
 		if (property == "position")
-			transform->position = value;
+			transform->setPosition(value);
 		else if (property == "rotation")
-			transform->rotation = value;
+			transform->setRotation(value);
 		else 
 			throw std::invalid_argument("Invalid property name");
 	}
