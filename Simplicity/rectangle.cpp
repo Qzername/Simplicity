@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
@@ -65,14 +66,15 @@ void Rectangle::Render(unsigned int shaderProgram) {
     glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
     
 	vector3 position = transform.getPosition();
-	vector3 rotation = transform.getRotation();
+	vector3 rotationEuler = transform.getRotation();
 
     glm::vec3 glmPos = glm::vec3(position.x, position.y, position.z);
     transformMatrix = glm::translate(transformMatrix, glmPos);
 
-    transformMatrix = glm::rotate(transformMatrix, rotation.x / 90.0f, glm::vec3(1.0f, 0.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, rotation.y / 90.0f, glm::vec3(0.0f, 1.0f, 0.0f));
-    transformMatrix = glm::rotate(transformMatrix, rotation.z / 90.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+    glm::vec3 rotationEulerRadians = glm::vec3(glm::radians(rotationEuler.x), glm::radians(rotationEuler.y), glm::radians(rotationEuler.z));
+    glm::quat rotation = glm::quat(rotationEulerRadians);
+    glm::mat4 rotationMatrix = glm::mat4_cast(rotation);
+	transformMatrix *= rotationMatrix;
 
     unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));
