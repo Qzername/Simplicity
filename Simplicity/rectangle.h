@@ -5,15 +5,17 @@
 
 class Rectangle : public Drawable
 {
-public:
 	float width, height;
-
-private:
-	unsigned int VAO;
-	unsigned int GenerateVAO();
 
 public:
 	Rectangle(float x, float y, float width, float height);
 
-	void Render(unsigned int shaderProgram);
+	float getWidth();
+	void setWidth(float width);
+
+	float getHeight();
+	void setHeight(float height);
+
+private:
+	unsigned int GenerateVAO();
 };
