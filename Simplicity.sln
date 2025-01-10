@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simplicity.NET", "Simplicit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicWindow", "SimplicityNET\Examples\BasicWindow\BasicWindow.csproj", "{B5D3BD4E-E0E1-41DE-A04F-499CD9626B72}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "SimplicityNET\Examples\", "{5533639B-C6BF-44E9-88CE-E78B9C6767CB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5533639B-C6BF-44E9-88CE-E78B9C6767CB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimplicityNET", "SimplicityNET", "{445FD1A7-7B27-463C-8141-A9ADB7C8B603}"
 EndProject

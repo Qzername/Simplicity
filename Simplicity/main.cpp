@@ -5,3 +5,5 @@
 #include "drawableLink.h"
 #include "cubeLink.h"
 #include "rectangleLink.h"
+
+#include "model.h"
