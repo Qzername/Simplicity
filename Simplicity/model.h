@@ -1,5 +1,4 @@
 #pragma once
-
 #include <glad/glad.h> 
 
 #include <assimp/Importer.hpp>
@@ -8,9 +7,6 @@
 
 #include <stb_image/stb_image.h>
 
-#include "mesh.h"
-#include "vector3.h"
-
 #include <string>
 #include <fstream>
 #include <map>
@@ -18,17 +14,23 @@
 #include <iostream>
 #include <vector>
 
+#include "mesh.h"
+#include "vector3.h"
+
 using namespace std;
 
-class Model
+class Model : public Drawable
 {
 public:
+    
     // model data 
     vector<Mesh>    meshes;
     string directory;
 
-    Model(string const& path)
+    Model(string const& path) : Drawable(0,0)
     {
+        transform = Transform();
+
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
         
@@ -42,8 +44,25 @@ public:
         processNode(scene->mRootNode, scene);
     }
 
-    void Draw()
+    void Render(unsigned int shaderProgram)
     {
+        //transform
+        glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+
+        vector3 position = transform.getPosition();
+        vector3 rotationEuler = transform.getRotation();
+
+        glm::vec3 glmPos = glm::vec3(position.x, position.y, position.z);
+        transformMatrix = glm::translate(transformMatrix, glmPos);
+
+        glm::vec3 rotationEulerRadians = glm::vec3(glm::radians(rotationEuler.x), glm::radians(rotationEuler.y), glm::radians(rotationEuler.z));
+        glm::quat rotation = glm::quat(rotationEulerRadians);
+        glm::mat4 rotationMatrix = glm::mat4_cast(rotation);
+        transformMatrix *= rotationMatrix;
+
+        unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));
+
         for (unsigned int i = 0; i < meshes.size(); i++)
             meshes[i].Draw();
     }
