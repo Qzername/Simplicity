@@ -5,6 +5,6 @@
     /// </summary>
     internal static class LibConsts
     {
-        public const string LibPath = "./Simplicity.dll";
+        public const string LibPath = "Simplicity.dll";
     }
 }
