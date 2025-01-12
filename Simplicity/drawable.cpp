@@ -15,7 +15,15 @@ Drawable::Drawable(float x, float y){
     this->color = color;
 }
 
-void Drawable::Render(unsigned int shaderProgram) {
+void Drawable::render(unsigned int shaderProgram) {
+    calculateTransform(shaderProgram);
+
+    //draw
+    glBindVertexArray(VAO);
+    glDrawElements(GL_TRIANGLES, amountOfVertices, GL_UNSIGNED_INT, 0);
+}
+
+void Drawable::calculateTransform(unsigned int shaderProgram) {
     //color
     int vertexColorLocation = glGetUniformLocation(shaderProgram, "color");
     glUniform4f(vertexColorLocation, color.r / 255, color.g / 255, color.b / 255, color.w / 255);
@@ -37,7 +45,4 @@ void Drawable::Render(unsigned int shaderProgram) {
     unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));
 
-    //draw
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, amountOfVertices, GL_UNSIGNED_INT, 0);
 }

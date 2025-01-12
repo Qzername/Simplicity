@@ -37,7 +37,7 @@ void Window::clear(Color color) {
 }
 
 void Window::draw(Drawable* drawable) {
-	drawable->Render(shaderProgram);
+	drawable->render(shaderProgram);
 }
 
 void Window::render() {
