@@ -1,10 +1,9 @@
 #include "window.h"
+#include "texture2D.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
-#include <iostream>
 
 Window::Window(const char* windowName) {
     window = initializeGlfw(windowName);
@@ -12,6 +11,10 @@ Window::Window(const char* windowName) {
     shaderProgram = compileShaders(readShaders());
     camera.Config(shaderProgram);
     glUseProgram(shaderProgram);
+
+    //set default texture
+    Texture2D defaultTexture = Texture2D();
+    defaultTexture.SetActive();
 }
 
 Window::~Window() {

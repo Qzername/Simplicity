@@ -6,6 +6,7 @@ class Texture2D {
 
 public:
 	Texture2D(const char* filename);
+	Texture2D();
 
 	void SetActive();
 };

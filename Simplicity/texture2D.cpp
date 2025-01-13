@@ -2,10 +2,36 @@
 #include <stb_image/stb_image.h>
 #include <iostream>
 
+using namespace std;
+
+void generateTextureWithData(unsigned int* texture, int width, int height, unsigned char* data);
+
 Texture2D::Texture2D(const char* filename)
 {
-	glGenTextures(1, &this->texture);
-	glBindTexture(GL_TEXTURE_2D, this->texture);
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
+
+    generateTextureWithData(&texture, width, height, data);
+	
+    stbi_image_free(data);
+}
+
+Texture2D::Texture2D() {
+    unsigned char textureData[] = {
+        255,255,255
+    };
+    generateTextureWithData(&texture, 1, 1, textureData);
+}
+
+void Texture2D::SetActive()
+{
+    glBindTexture(GL_TEXTURE_2D, this->texture);
+}
+
+void generateTextureWithData(unsigned int* texture, int width, int height, unsigned char* data)
+{
+    glGenTextures(1, texture);
+    glBindTexture(GL_TEXTURE_2D, *texture);
 
     // set the texture wrapping parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
@@ -13,9 +39,6 @@ Texture2D::Texture2D(const char* filename)
     // set texture filtering parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    int width, height, nrChannels;
-    unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
 
     if (data)
     {
@@ -26,10 +49,4 @@ Texture2D::Texture2D(const char* filename)
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-    stbi_image_free(data);
-}
-
-void Texture2D::SetActive()
-{
-    glBindTexture(GL_TEXTURE_2D, this->texture);
 }
