@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Simplicity.NET\Simplicity.NET.csproj" />
+    <ProjectReference Include="..\Simplicity.NET\Simplicity.NET\Simplicity.NET.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="1.jpg">
+    <None Update="pillar.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Shaders\basic.frag">
