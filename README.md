@@ -1,13 +1,40 @@
 # Simplicity
 
-Simplicity is a graphics library for C# with the goal of being as straightforward as possible. 
-The library aims to minimize the lines of code required to draw 2D/3D objects on the screen.
+Simplicity is a graphics library for C# designed to be as straightforward as possible.
+The library minimizes the lines of code required to draw 2D/3D objects on the screen.
 
 > [!WARNING]
-> This project is still very much work in progress, therefore expect a lot of changes between versions, bugs and missing features
+> This project is still a work in progress. Expect frequent changes between versions, bugs, and missing features.
 
-This project does not have a NuGet package yet, please see wiki for more information on how to install the library.
-I will update wiki in near future so it will contain every feature of the library
+This project does not have a NuGet package yet. Please see the wiki for more information on how to install the library.
 
-### Usage:
-Documentation is not yet available. Please refer to the BasicWindow example for guidance.
+### Example code:
+
+```cs
+using Simplicity.NET;
+using Simplicity.NET.Objects;
+
+Window window = new("Window title");
+
+Cube cube = new(1,1,1);
+
+while(!window.ShouldClose())
+{
+  window.FrameCalculations();
+  window.Clear(new(100,50,50));
+  window.Draw(cube);
+  window.Render();
+}
+```
+
+### Roadmap (Planned features)
+- More ready-to-use objects in both 2D and 3D
+- Scenes 
+- Lighting
+- Viewports
+
+### Planned improvements
+- Model and texture loading
+- Rotation
+- Optimalization
+- Better input system
