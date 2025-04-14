@@ -10,6 +10,7 @@ float lastY = 600 / 2;
 Window window = new Window("Objects showcase");
 
 window.Camera.Transform.Position = new Vector3(0, 0, -3);
+window.Scene.BackgroundColor = new Color(50, 150, 150);
 
 Rectangle rect = new(-0.5f, 0.2f, 0.5f, 0.5f);
 
@@ -17,20 +18,16 @@ Cube cube = new(new Vector3(2f, 0, 4));
 cube.Color = new Color(50, 50, 255);
 cube.Transform.Rotation = new Vector3(45, 0, 45);
 
-while (!window.ShouldClose())
+window.Scene.Instantiate(cube);
+window.Scene.Instantiate(rect);
+
+window.SetOnFrame(() =>
 {
     ProcessKeyboardInput();
-    Vector3 cursorPos = window.GetCursorPos();
-    ProcessMouseInput(cursorPos.X, cursorPos.Y);
+    ProcessMouseInput();
+});
 
-    window.FrameCalculations();
-    window.Clear(new Color(50, 150, 150));
-
-    window.Draw(cube);
-    window.Draw(rect);
-
-    window.Render();
-}
+window.Show();
 
 // CAMERA MOVEMENT
 void ProcessKeyboardInput()
@@ -64,8 +61,13 @@ void ProcessKeyboardInput()
     window.Camera.Transform.Position = window.Camera.Transform.Position + cameraPos;
 }
 
-void ProcessMouseInput(float xpos, float ypos)
+void ProcessMouseInput()
 {
+    Vector3 vector3 = window.GetCursorPos();
+
+    float xpos = vector3.X;
+    float ypos = vector3.Y;
+
     if (firstMouse)
     {
         lastX = xpos;

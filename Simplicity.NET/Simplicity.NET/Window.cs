@@ -2,6 +2,9 @@
 
 namespace Simplicity.NET
 {
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void OnFrameDelegate();
+
     public class Window
     {
         // fields and properties
@@ -9,6 +12,8 @@ namespace Simplicity.NET
         static extern IntPtr Window_getCamera(IntPtr window);
         [DllImport(LibConsts.LibPath)]
         static extern float Window_getDeltaTime(IntPtr window);
+        [DllImport(LibConsts.LibPath)]
+        static extern IntPtr Window_getScene(IntPtr window);
 
         //constructors
         [DllImport(LibConsts.LibPath)]
@@ -16,20 +21,9 @@ namespace Simplicity.NET
 
         //functions
         [DllImport(LibConsts.LibPath)]
-        static extern bool Window_shouldClose(IntPtr window);
-
+        static extern int Window_show(IntPtr window);
         [DllImport(LibConsts.LibPath)]
-        static extern void Window_frameCalculations(IntPtr window);
-
-        [DllImport(LibConsts.LibPath)]
-        static extern void Window_clear(IntPtr window, Color color);
-
-        [DllImport(LibConsts.LibPath)]
-        static extern void Window_draw(IntPtr window, IntPtr drawable);
-
-        [DllImport(LibConsts.LibPath)]
-        static extern void Window_render(IntPtr window);
-
+        static extern int Window_setOnFrame(IntPtr window, OnFrameDelegate callback);
         [DllImport(LibConsts.LibPath)]
         static extern int Window_getKey(IntPtr window, int key);
 
@@ -42,35 +36,23 @@ namespace Simplicity.NET
         [DllImport(LibConsts.LibPath)]
         static extern void Window_close(IntPtr window);
 
+        Scene _scene;
         Camera _camera;
         IntPtr _window;
 
         public float DeltaTime => Window_getDeltaTime(_window);
         public Camera Camera => _camera;
+        public Scene Scene => _scene;
 
         public Window(string windowName)
         {
             _window = Window_create(windowName);
             _camera = new Camera(Window_getCamera(_window));
+            _scene = new Scene(Window_getScene(_window));
         }
 
-        /// <summary>
-        /// Check whenever the window should close.
-        /// </summary>
-        public bool ShouldClose() => Window_shouldClose(_window);
-        /// <summary>
-        /// Perform the necessary frame calculations.
-        /// </summary>
-        public void FrameCalculations() => Window_frameCalculations(_window);
-        /// <summary>
-        /// Clear everything in the window with a specific color.
-        /// </summary>
-        public void Clear(Color color) => Window_clear(_window, color);
-        public void Draw(Drawable drawable) => Window_draw(_window, drawable.GetPtr());
-        /// <summary>
-        /// Render every object that has been drawn (<see cref="Draw(Drawable)"/>).
-        /// </summary>
-        public void Render() => Window_render(_window);
+        public void Show() => Window_show(_window);
+        public void SetOnFrame(OnFrameDelegate onFrame) => Window_setOnFrame(_window, onFrame);
         /// <summary>
         /// Get the status of a specific key.
         /// </summary>

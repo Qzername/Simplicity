@@ -10,6 +10,8 @@ namespace Simplicity.NET
         static extern Color Drawable_getColor(IntPtr drawable);
         [DllImport(LibConsts.LibPath)]
         static extern void Drawable_setColor(IntPtr drawable, Color color);
+        [DllImport(LibConsts.LibPath)]
+        static extern void Drawable_setTexture(IntPtr drawable, IntPtr texture);
 
         IntPtr _drawable;
         internal IntPtr GetPtr()
@@ -31,5 +33,7 @@ namespace Simplicity.NET
             _drawable = drawable;
             _transform = new Transform(Drawable_getTransform(drawable));
         }
+
+        public void SetTexture(Texture2D texture) => Drawable_setTexture(_drawable, texture.GetPtr());
     }
 }
