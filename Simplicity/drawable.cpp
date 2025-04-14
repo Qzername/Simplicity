@@ -18,9 +18,16 @@ Drawable::Drawable(float x, float y){
 void Drawable::render(unsigned int shaderProgram) {
     calculateTransform(shaderProgram);
 
+    if (texture)
+        texture->SetActive();
+
     //draw
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, amountOfVertices, GL_UNSIGNED_INT, 0);
+}
+
+void Drawable::setTexture(Texture2D* texture) {
+    this->texture = texture;
 }
 
 void Drawable::calculateTransform(unsigned int shaderProgram) {
@@ -44,5 +51,4 @@ void Drawable::calculateTransform(unsigned int shaderProgram) {
 
     unsigned int transformLoc = glGetUniformLocation(shaderProgram, "transform");
     glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transformMatrix));
-
 }

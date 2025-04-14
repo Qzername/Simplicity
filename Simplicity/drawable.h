@@ -9,12 +9,15 @@
 #include "vector3.h"
 #include "color.h"
 #include "transform.h"
+#include "texture2D.h"
 
 class Drawable
 {
 protected:
 	unsigned int VAO;	
 	unsigned int amountOfVertices;
+
+	Texture2D* texture;
 
 	void calculateTransform(unsigned int shaderProgram);
 public:
@@ -23,5 +26,6 @@ public:
 
 	Drawable(float x, float y);
 
+	void setTexture(Texture2D* texture);
 	virtual void render(unsigned int shaderProgram);
 };
