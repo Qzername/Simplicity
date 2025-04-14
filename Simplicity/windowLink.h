@@ -2,7 +2,7 @@
 #include "window.h"
 
 extern "C" {
-	// fields and properties
+	//fields and properties
 	__declspec(dllexport) Camera* Window_getCamera(Window* window)
 	{
 		return &window->camera;
@@ -13,6 +13,11 @@ extern "C" {
 		return window->deltaTime;
 	}
 
+	__declspec(dllexport) Scene* Window_getScene(Window* window) 
+	{
+		return &window->scene;
+	}
+
 	//constructors
 	__declspec(dllexport) Window* Window_create(const char* windowName)
 	{
@@ -20,29 +25,14 @@ extern "C" {
 	}
 
 	//functions
-	__declspec(dllexport) bool Window_shouldClose(Window * window)
+	__declspec(dllexport) void Window_show(Window* window)
 	{
-		return window->shouldClose();
+		window->show();
 	}
 
-	__declspec(dllexport) void Window_frameCalculations(Window* window)
+	__declspec(dllexport) void Window_setOnFrame(Window* window, OnFrameCallback cb)
 	{
-		window->frameCalculations();
-	}
-
-	__declspec(dllexport) void Window_clear(Window* window, Color color)
-	{
-		window->clear(color);
-	}
-
-	__declspec(dllexport) void Window_draw(Window* window, Drawable* drawable)
-	{
-		window->draw(drawable);
-	}
-
-	__declspec(dllexport) void Window_render(Window* window)
-	{
-		window->render();
+		window->setOnFrameCallback(cb);
 	}
 
 	__declspec(dllexport) int Window_getKey(Window* window, int key)

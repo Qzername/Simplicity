@@ -1,7 +1,4 @@
 #include "camera.h"
-#include <iostream>
-
-using namespace std;
 
 void Camera::Config(unsigned int shaderProgramID) {
 	this->shaderProgramID = shaderProgramID;
@@ -29,6 +26,4 @@ void Camera::CalculateTransformations()
 
 	unsigned int viewLoc = glGetUniformLocation(shaderProgramID, "view");
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-
 }

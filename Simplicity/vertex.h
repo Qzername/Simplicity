@@ -9,5 +9,5 @@ struct Vertex {
     // normal
     vector3 normal;
     // texCoords
-    vector2 texCoords; //todo: change it to vector2
+    vector2 texCoords;
 };

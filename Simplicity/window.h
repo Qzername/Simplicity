@@ -3,6 +3,7 @@
 #include "shaderCompiling.h"
 #include "drawable.h"
 #include "camera.h"
+#include "scene.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,25 +11,32 @@
 #include <list>
 #include <functional>
 
+typedef void(*OnFrameCallback)();
+
 class Window
 {
 	GLFWwindow* window;
+
 	unsigned int shaderProgram;
 
 	float lastFrame = 0.0f;
 
+	void frameCalculations();
+	void render();
+
+	OnFrameCallback onFrame = nullptr; 
+
 public:
+	Scene scene;
 	Camera camera;
 	float deltaTime = 0.0f;
 
 	Window(const char* windowName);
 	~Window();
 
-	bool shouldClose();
-	void frameCalculations();
-	void clear(Color color);
-	void draw(Drawable* drawable);
-	void render();
+	void show();
+
+	void setOnFrameCallback(OnFrameCallback cb);
 
 	int getKey(int key);
 	vector3 getCursorPos();

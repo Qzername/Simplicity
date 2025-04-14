@@ -21,8 +21,28 @@ Window::~Window() {
     glfwTerminate();
 }
 
-bool Window::shouldClose() {
-	return glfwWindowShouldClose(window);
+void Window::show()
+{
+    while (!glfwWindowShouldClose(window))
+    {
+        frameCalculations();
+
+        if(onFrame)
+            onFrame();
+
+        Color backgroundColor = scene.getBackgroundColor();
+        glClearColor(backgroundColor.r/255, backgroundColor.g/255, backgroundColor.b/255, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        for (auto& obj : scene.objects)
+            obj->render(shaderProgram);
+
+        render();
+    }
+}
+
+void Window::setOnFrameCallback(OnFrameCallback cb) {
+    onFrame = cb;
 }
 
 void Window::frameCalculations() {
@@ -32,15 +52,6 @@ void Window::frameCalculations() {
 
     //TODO: move it somewhere else and dont calculate it every frame
     camera.CalculateTransformations();
-}
-
-void Window::clear(Color color) {
-	glClearColor(color.r/255, color.g/255, color.b/255, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-}
-
-void Window::draw(Drawable* drawable) {
-	drawable->render(shaderProgram);
 }
 
 void Window::render() {

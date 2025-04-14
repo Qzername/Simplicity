@@ -63,6 +63,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">
@@ -136,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="modelLink.h">
       <Filter>Links\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sceneLink.h">
+      <Filter>Links</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
