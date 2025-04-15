@@ -6,7 +6,6 @@
 class Transform {
 	vector3 position;
 	vector3 rotation; //euler angles, TODO: add quaternions support
-	//add scale
 
 	vector3 forward;
 	vector3 right;
@@ -14,7 +13,9 @@ class Transform {
 
 	void calculateDirections();
 public:
-	
+	vector3 scale;
+
+	//TODO: fix this mess
 	vector3 getPosition();
 	void setPosition(vector3 position);
 	vector3 getRotation();

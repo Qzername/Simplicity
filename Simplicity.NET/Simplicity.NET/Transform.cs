@@ -35,6 +35,12 @@ namespace Simplicity.NET
             set => Transform_setProperty(_transform, "rotation", value);
         }
 
+        public Vector3 Scale
+        {
+            get => Transform_getProperty(_transform, "scale");
+            set => Transform_setProperty(_transform, "scale", value);
+        }
+
         /// <summary>
         /// The direction the object is facing
         /// </summary>

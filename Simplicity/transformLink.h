@@ -13,6 +13,8 @@ extern "C" {
 			return transform->getPosition();
 		else if (property == "rotation")
 			return transform->getRotation();
+		else if (property == "scale")
+			return transform->scale;
 		else if (property == "forward")
 			return transform->getForward();
 		else if (property == "right")
@@ -31,6 +33,8 @@ extern "C" {
 			transform->setPosition(value);
 		else if (property == "rotation")
 			transform->setRotation(value);
+		else if (property == "scale")
+			transform->scale = value;
 		else 
 			throw std::invalid_argument("Invalid property name");
 	}

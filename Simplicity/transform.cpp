@@ -1,3 +1,4 @@
+#pragma once
 #include "transform.h"
 
 #include <glm/glm.hpp>
@@ -51,6 +52,7 @@ vector3 Transform::getUp() {
 }
 
 Transform::Transform(vector3 position, vector3 rotation) {
+	scale = vector3(1, 1, 1);
 	this->position = position;
 	this->rotation = rotation;
 
