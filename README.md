@@ -27,14 +27,21 @@ while(!window.ShouldClose())
 }
 ```
 
-### Roadmap (Planned features)
-- More ready-to-use objects in both 2D and 3D
-- Scenes 
-- Lighting
-- Viewports
+### 0.2v Roadmap (Planned features)
+- [x] Scenes 
+- [x] Add Scale
+- [ ] Tool for model loading
+- [ ] Move rotation to quaternions
+- [ ] Move texture loading into separate tool
+- [ ] Alpha channel (transparency)
+- [ ] Add default shaders into library
+- [ ] Lighting
+- [ ] Viewports
+- [ ] Add easier way to add custom shaders
+- [ ] Drawing tool for simple shapes such as lines, circles, rectangles
+- [ ] Reorganize solution so that it will be easier to compile the project
+- [ ] Improvements specified in comments that contains "TODO"
 
-### Planned improvements
-- Model and texture loading
-- Rotation
-- Optimalization
-- Better input system
+### 0.3v Roadmap
+
+For now, I don't have general plan on how should library be structuralized and creating that structure of whole library will be a focus for 0.3v
