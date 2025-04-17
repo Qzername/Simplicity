@@ -30,7 +30,6 @@ while(!window.ShouldClose())
 ### 0.2v Roadmap (Planned features)
 - [x] Scenes 
 - [x] Add Scale
-- [ ] Tool for model loading
 - [ ] Move rotation to quaternions
 - [ ] Move texture loading into separate tool
 - [ ] Alpha channel (transparency)
