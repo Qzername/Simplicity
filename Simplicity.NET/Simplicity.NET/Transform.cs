@@ -13,6 +13,12 @@ namespace Simplicity.NET
         [DllImport(LibConsts.LibPath)]
         static extern void Transform_setProperty(IntPtr transform, string name, Vector3 value);
 
+        [DllImport(LibConsts.LibPath)]
+        static extern Quaternion Transform_getQuaternion(IntPtr transform);
+
+        [DllImport(LibConsts.LibPath)]
+        static extern void Transform_setQuaternion(IntPtr transform, Quaternion value);
+
         IntPtr _transform;
 
         internal Transform(IntPtr transform)
@@ -26,14 +32,22 @@ namespace Simplicity.NET
             set => Transform_setProperty(_transform, "position", value);
         }
 
+        #region Rotation
         /// <summary>
         /// The rotation of the object in euler angles
         /// </summary>
-        public Vector3 Rotation
+        public Vector3 EulerRotation
         {
-            get => Transform_getProperty(_transform, "rotation");
-            set => Transform_setProperty(_transform, "rotation", value);
+            get => Transform_getProperty(_transform, "eulerRotation");
+            set => Transform_setProperty(_transform, "eulerRotation", value);
         }
+
+        public Quaternion Rotation
+        {
+            get => Transform_getQuaternion(_transform);
+            set => Transform_setQuaternion(_transform, value);
+        }
+        #endregion
 
         public Vector3 Scale
         {

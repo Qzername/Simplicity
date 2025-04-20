@@ -11,8 +11,8 @@ extern "C" {
 
 		if (property == "position")
 			return transform->getPosition();
-		else if (property == "rotation")
-			return transform->getRotation();
+		else if (property == "eulerRotation")
+			return transform->getEulerRotation();
 		else if (property == "scale")
 			return transform->scale;
 		else if (property == "forward")
@@ -31,11 +31,19 @@ extern "C" {
 
 		if (property == "position")
 			transform->setPosition(value);
-		else if (property == "rotation")
-			transform->setRotation(value);
+		else if (property == "eulerRotation")
+			transform->setEulerRotation(value);
 		else if (property == "scale")
 			transform->scale = value;
 		else 
 			throw std::invalid_argument("Invalid property name");
+	}
+
+	__declspec(dllexport) quaternion Transform_getQuaternion(Transform* transform) {
+		return transform->getRotation();
+	}
+
+	__declspec(dllexport) void Transform_setQuaternion(Transform* transform, quaternion rotation) {
+		transform->setRotation(rotation);
 	}
 }

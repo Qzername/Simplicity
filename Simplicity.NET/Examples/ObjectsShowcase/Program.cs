@@ -16,10 +16,12 @@ Rectangle rect = new(-0.5f, 0.2f, 0.5f, 0.5f);
 
 Cube cube = new(new Vector3(2f, 0, 4));
 cube.Color = new Color(50, 50, 255);
-cube.Transform.Rotation = new Vector3(45, 0, 45);
+cube.Transform.EulerRotation = new Vector3(45, 0, 45);
 
 window.Scene.Instantiate(cube);
 window.Scene.Instantiate(rect);
+
+Vector3 mousePos = new Vector3();
 
 window.SetOnFrame(() =>
 {
@@ -85,5 +87,7 @@ void ProcessMouseInput()
     xoffset *= sensitivity;
     yoffset *= sensitivity;
 
-    window.Camera.Transform.Rotation = window.Camera.Transform.Rotation + new Vector3(-yoffset, xoffset, 0);
+    mousePos += new Vector3(-yoffset, xoffset,0);
+
+    window.Camera.Transform.EulerRotation = mousePos;
 }

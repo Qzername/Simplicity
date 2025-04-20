@@ -7,6 +7,6 @@ window.Camera.Transform.Position = new Vector3(0, 0, -10);
 window.Scene.BackgroundColor = new Color(50, 75, 75);
 
 Model model = new Model(Directory.GetCurrentDirectory() + "/pillar.obj");
-model.Transform.Rotation = new(30, 0, 45);
+model.Transform.EulerRotation = new(30, 0, 45);
 
 window.Show();

@@ -1,5 +1,4 @@
 #include "drawable.h"
-#include "color.h"
 
 Drawable::Drawable(float x, float y){
     vector3 position;
@@ -39,16 +38,15 @@ void Drawable::calculateTransform(unsigned int shaderProgram) {
     glm::mat4 transformMatrix = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
 
     vector3 position = transform.getPosition();
-    vector3 rotationEuler = transform.getRotation();
+    quaternion rotation = transform.getRotation();
 
     //position
     glm::vec3 glmPos = glm::vec3(position.x, position.y, position.z);
     transformMatrix = glm::translate(transformMatrix, glmPos);
 
     //rotation
-    glm::vec3 rotationEulerRadians = glm::vec3(glm::radians(rotationEuler.x), glm::radians(rotationEuler.y), glm::radians(rotationEuler.z));
-    glm::quat rotation = glm::quat(rotationEulerRadians);
-    glm::mat4 rotationMatrix = glm::mat4_cast(rotation);
+    glm::quat quaternion = glm::quat(rotation.w, rotation.x, rotation.y, rotation.z);
+    glm::mat4 rotationMatrix = glm::mat4_cast(quaternion);
     transformMatrix *= rotationMatrix;
 
     //scale

@@ -146,5 +146,8 @@
     <ClInclude Include="sceneLink.h">
       <Filter>Links</Filter>
     </ClInclude>
+    <ClInclude Include="quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

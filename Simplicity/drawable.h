@@ -7,6 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include "vector3.h"
+#include "quaternion.h"
 #include "color.h"
 #include "transform.h"
 #include "texture2D.h"

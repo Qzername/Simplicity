@@ -9,9 +9,8 @@
 void Transform::calculateDirections() {
 	glm::vec3 position = glm::vec3(this->position.x, this->position.y, this->position.z);
 	
-	glm::vec3 rotationEuler = glm::vec3(glm::radians(this->rotation.x), glm::radians(this->rotation.y), glm::radians(this->rotation.z));
-	glm::quat quaternion = glm::quat(rotationEuler);
-
+	glm::quat quaternion = glm::quat(rotation.w, rotation.x, rotation.y, rotation.z);
+	
 	glm::vec3 forward = quaternion * glm::vec3(0, 0, 1);
 	glm::vec3 up = quaternion * glm::vec3(0, 1, 0);
 	glm::vec3 right = quaternion * glm::vec3(1, 0, 0);
@@ -30,14 +29,31 @@ void Transform::setPosition(vector3 position) {
 	calculateDirections();
 }
 
-vector3 Transform::getRotation() {
+// --- rotation ---
+
+quaternion Transform::getRotation() {
 	return rotation;
 }
 
-void Transform::setRotation(vector3 rotation) {
+void Transform::setRotation(quaternion rotation) {
 	this->rotation = rotation;
+}
+
+vector3 Transform::getEulerRotation() {
+	glm::quat quaternion = glm::quat(rotation.w, rotation.x, rotation.y, rotation.z);
+	glm::vec3 euler = glm::degrees(glm::eulerAngles(quaternion));
+	return vector3(euler.x, euler.y, euler.z);
+}
+
+void Transform::setEulerRotation(vector3 rotation) {
+	glm::vec3 euler = glm::radians(glm::vec3(rotation.x, rotation.y, rotation.z));
+	glm::quat quat = glm::quat(euler);
+	this->rotation = quaternion(quat.w, quat.x, quat.y, quat.z);
+
 	calculateDirections();
 }
+
+// --- directions ---
 
 vector3 Transform::getForward() {
 	return forward;
@@ -54,7 +70,7 @@ vector3 Transform::getUp() {
 Transform::Transform(vector3 position, vector3 rotation) {
 	scale = vector3(1, 1, 1);
 	this->position = position;
-	this->rotation = rotation;
+	setEulerRotation(rotation);
 
 	calculateDirections();
 }
