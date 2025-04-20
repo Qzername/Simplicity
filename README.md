@@ -31,15 +31,16 @@ while(!window.ShouldClose())
 - [x] Scenes 
 - [x] Add Scale
 - [x] Move rotation to quaternions
-- [ ] Move texture and model loading into a separate tool
-- [ ] Alpha channel (transparency)
+- [x] Move texture loading into a separate tool
 - [ ] Add default shaders into the library
+- [ ] Alpha channel (transparency)
 - [ ] Lighting
 - [ ] Viewports
 - [ ] Add easier way to add custom shaders
 - [ ] Drawing tool for simple shapes such as lines, circles, rectangles
 - [ ] Reorganize solution so that it will be easier to compile the project
 - [ ] Improvements specified in comments that contain "TODO"
+- [ ] Improve model loading
 
 ### 0.3v Roadmap
 

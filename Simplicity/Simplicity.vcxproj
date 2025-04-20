@@ -141,6 +141,7 @@
     <ClCompile Include="include\glad\glad.c" />
     <ClCompile Include="initializationTools.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="model.cpp" />
     <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shaderCompiling.cpp" />

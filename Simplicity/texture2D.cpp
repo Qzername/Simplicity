@@ -6,26 +6,28 @@ using namespace std;
 
 void generateTextureWithData(unsigned int* texture, int width, int height, unsigned char* data);
 
-Texture2D::Texture2D(const char* filename)
-{
-    int width, height, nrChannels;
-    unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
-
+Texture2D::Texture2D(int width, int height, unsigned char data[]) {
     generateTextureWithData(&texture, width, height, data);
-	
-    stbi_image_free(data);
-}
-
-Texture2D::Texture2D() {
-    unsigned char textureData[] = {
-        255,255,255
-    };
-    generateTextureWithData(&texture, 1, 1, textureData);
 }
 
 void Texture2D::SetActive()
 {
     glBindTexture(GL_TEXTURE_2D, this->texture);
+}
+
+Texture2D Texture2D::LoadFromFile(const char* filename)
+{
+    int width, height, nrChannels;
+    unsigned char* data = stbi_load(filename, &width, &height, &nrChannels, 0);
+
+    Texture2D texture = Texture2D(width, height, data);
+    stbi_image_free(data);
+
+    return texture;
+}
+
+Texture2D Texture2D::LoadFromData(int width, int height, unsigned char data[]) {
+    return Texture2D(width, height, data);
 }
 
 void generateTextureWithData(unsigned int* texture, int width, int height, unsigned char* data)

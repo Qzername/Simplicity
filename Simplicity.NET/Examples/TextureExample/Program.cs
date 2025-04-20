@@ -5,8 +5,8 @@ Window window = new("Texture example");
 window.Scene.BackgroundColor = new Color(50, 75, 75);
 window.Camera.Transform.Position = new Vector3(0, 0, -1);
 
-Texture2D texture = new(Directory.GetCurrentDirectory() + "/1.jpg");
-Texture2D texture2 = new(Directory.GetCurrentDirectory() + "/2.jpg");
+Texture2D texture = Texture2D.LoadFromFile(Directory.GetCurrentDirectory() + "/1.jpg");
+Texture2D texture2 = Texture2D.LoadFromFile(Directory.GetCurrentDirectory() + "/2.jpg");
 
 Rectangle rect = new(0,0, 0.2f, 0.2f);
 rect.SetTexture(texture);

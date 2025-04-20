@@ -13,7 +13,11 @@ Window::Window(const char* windowName) {
     glUseProgram(shaderProgram);
 
     //set default texture
-    Texture2D defaultTexture = Texture2D();
+    unsigned char textureData[] = {
+        255,255,255
+    };
+
+    Texture2D defaultTexture = Texture2D::LoadFromData(1,1,textureData);
     defaultTexture.SetActive();
 }
 

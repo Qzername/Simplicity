@@ -66,6 +66,9 @@
     <ClCompile Include="scene.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Resource Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">
