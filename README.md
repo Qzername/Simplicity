@@ -32,7 +32,7 @@ while(!window.ShouldClose())
 - [x] Add Scale
 - [x] Move rotation to quaternions
 - [x] Move texture loading into a separate tool
-- [ ] Add default shaders into the library
+- [x] Add default shaders into the library
 - [ ] Alpha channel (transparency)
 - [ ] Lighting
 - [ ] Viewports
