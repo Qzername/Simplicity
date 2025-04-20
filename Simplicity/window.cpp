@@ -8,7 +8,7 @@
 Window::Window(const char* windowName) {
     window = initializeGlfw(windowName);
 
-    shaderProgram = compileShaders(readShaders());
+    shaderProgram = compileShaders(loadDefaultShaders());
     camera.Config(shaderProgram);
     glUseProgram(shaderProgram);
 

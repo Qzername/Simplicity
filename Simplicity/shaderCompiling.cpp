@@ -2,6 +2,52 @@
 
 void checkForCompilationErrors(unsigned int shaderAdrs);
 
+vector<shaderInfo> loadDefaultShaders() {
+    vector<shaderInfo> shaders;
+
+    shaderInfo fragmentShader;
+    fragmentShader.type = FRAGMENT;
+    fragmentShader.content = R"frag(
+        #version 330 core
+        out vec4 FragColor;
+
+        in vec2 TexCoord;
+
+        uniform vec4 color;
+        uniform sampler2D texture1;
+
+        void main()
+        {
+           FragColor = texture(texture1, TexCoord) * color;
+        }
+    )frag";
+    shaders.push_back(fragmentShader);
+
+    shaderInfo vertexShader;
+    vertexShader.type = VERTEX;
+    vertexShader.content = R"vert(
+        #version 330 core
+        layout (location = 0) in vec3 aPos;
+        layout (location = 1) in vec2 aTexCoord;
+
+        out vec2 TexCoord;
+
+        uniform mat4 transform;
+        uniform mat4 view;
+        uniform mat4 projection;
+
+        void main()
+        {
+            gl_Position = projection * view * transform * vec4(aPos, 1.0);
+	        TexCoord = vec2(aTexCoord.x, aTexCoord.y);
+        }
+    )vert";
+    shaders.push_back(vertexShader);
+
+    return shaders;
+}
+
+//TODO: do a better shader handling system
 vector<shaderInfo> readShaders()
 {
     vector<shaderInfo> shaders;

@@ -43,4 +43,4 @@ public:
 
 	void setMouseInputMode(int value);
 	void close();
-};
+};		

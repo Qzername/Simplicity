@@ -21,5 +21,6 @@ struct shaderInfo {
     string content;
 };
 
+vector<shaderInfo> loadDefaultShaders();
 vector<shaderInfo> readShaders();
 unsigned int compileShaders(vector<shaderInfo> shaders);
