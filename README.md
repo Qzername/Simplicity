@@ -33,7 +33,7 @@ while(!window.ShouldClose())
 - [x] Move rotation to quaternions
 - [x] Move texture loading into a separate tool
 - [x] Add default shaders into the library
-- [ ] Alpha channel (transparency)
+- [x] Alpha channel (transparency)
 - [ ] Lighting
 - [ ] Viewports
 - [ ] Add easier way to add custom shaders

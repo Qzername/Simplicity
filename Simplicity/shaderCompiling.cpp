@@ -18,7 +18,8 @@ vector<shaderInfo> loadDefaultShaders() {
 
         void main()
         {
-           FragColor = texture(texture1, TexCoord) * color;
+           vec4 texColor = texture(texture1, TexCoord) * color;
+           FragColor = vec4(texColor.rgb * color.rgb, texColor.a * color.a);
         }
     )frag";
     shaders.push_back(fragmentShader);

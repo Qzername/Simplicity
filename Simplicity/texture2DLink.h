@@ -9,8 +9,8 @@ extern "C" {
 		return &texture;
 	}
 
-	__declspec(dllexport) Texture2D* Texture_LoadFromData(int width, int height, unsigned char data[]) {
-		Texture2D texture = Texture2D::LoadFromData(width, height, data);
+	__declspec(dllexport) Texture2D* Texture_LoadFromData(int width, int height, unsigned char data[], TextureFormat textureFormat) {
+		Texture2D texture = Texture2D::LoadFromData(width, height, data, textureFormat);
 	
 		return &texture;
 	}

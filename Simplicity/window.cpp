@@ -17,7 +17,7 @@ Window::Window(const char* windowName) {
         255,255,255
     };
 
-    Texture2D defaultTexture = Texture2D::LoadFromData(1,1,textureData);
+    Texture2D defaultTexture = Texture2D::LoadFromData(1,1,textureData, TextureFormat::RGB);
     defaultTexture.SetActive();
 }
 
