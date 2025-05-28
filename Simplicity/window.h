@@ -26,6 +26,8 @@ class Window
 
 	OnFrameCallback onFrame = nullptr; 
 
+	Texture2D defaultTexture;
+
 public:
 	Scene scene;
 	Camera camera;

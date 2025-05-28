@@ -6,6 +6,10 @@ using namespace std;
 
 void generateTextureWithData(unsigned int* texture, int width, int height, unsigned char* data, TextureFormat textureFormat);
 
+Texture2D::Texture2D() {
+    texture = 0;
+}
+
 Texture2D::Texture2D(int width, int height, unsigned char data[], TextureFormat textureFormat) {
     generateTextureWithData(&texture, width, height, data, textureFormat);
 }
@@ -60,7 +64,7 @@ void generateTextureWithData(unsigned int* texture, int width, int height, unsig
         glGenerateMipmap(GL_TEXTURE_2D);
     }
     else
-    {
         std::cout << "Failed to load texture" << std::endl;
-    }
+
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

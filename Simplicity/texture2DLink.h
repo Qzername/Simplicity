@@ -4,14 +4,10 @@
 
 extern "C" {
 	__declspec(dllexport) Texture2D* Texture2D_LoadFromFile(const char* filename) {
-		Texture2D texture = Texture2D::LoadFromFile(filename);
-
-		return &texture;
+		return new Texture2D(Texture2D::LoadFromFile(filename));
 	}
 
 	__declspec(dllexport) Texture2D* Texture_LoadFromData(int width, int height, unsigned char data[], TextureFormat textureFormat) {
-		Texture2D texture = Texture2D::LoadFromData(width, height, data, textureFormat);
-	
-		return &texture;
+		return new Texture2D(Texture2D::LoadFromData(width, height, data, textureFormat));
 	}
 }

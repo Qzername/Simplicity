@@ -17,8 +17,7 @@ Window::Window(const char* windowName) {
         255,255,255
     };
 
-    Texture2D defaultTexture = Texture2D::LoadFromData(1,1,textureData, TextureFormat::RGB);
-    defaultTexture.SetActive();
+    defaultTexture = Texture2D::LoadFromData(1, 1, textureData, TextureFormat::RGB);
 }
 
 Window::~Window() {
@@ -38,8 +37,14 @@ void Window::show()
         glClearColor(backgroundColor.r/255, backgroundColor.g/255, backgroundColor.b/255, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        cout << "obj start" << endl;
+
         for (auto& obj : scene.objects)
+        {
+            defaultTexture.SetActive();
             obj->render(shaderProgram);
+        }
+        cout << "obj end" << endl;
 
         render();
     }

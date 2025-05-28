@@ -13,6 +13,8 @@ class Texture2D {
 
 	Texture2D(int width, int height, unsigned char data[], TextureFormat textureFormat);
 public:
+	Texture2D();
+
 	void SetActive();
 
 	static Texture2D LoadFromFile(const char* filename);
