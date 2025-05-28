@@ -12,12 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Shaders\basic.frag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Shaders\basic.vert">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Simplicity.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -69,6 +69,9 @@
     <ClCompile Include="model.cpp">
       <Filter>Resource Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Resource Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">

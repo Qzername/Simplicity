@@ -57,7 +57,7 @@ void ProcessKeyboardInput()
 
     if (window.GetKey(KeyCode.Space) == KeyStatus.Pressed)
         cameraPos += window.Camera.Transform.Up * cameraSpeed;
-    if (window.GetKey(KeyCode.LeftShift) == KeyStatus.Pressed)
+    if (window.GetKey(KeyCode.LeftControl) == KeyStatus.Pressed)
         cameraPos -= window.Camera.Transform.Up * cameraSpeed;
 
     window.Camera.Transform.Position = window.Camera.Transform.Position + cameraPos;

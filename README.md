@@ -27,17 +27,9 @@ while(!window.ShouldClose())
 }
 ```
 
-### 0.2v Roadmap (Planned features)
-- [x] Scenes 
-- [x] Add Scale
-- [x] Move rotation to quaternions
-- [x] Move texture loading into a separate tool
-- [x] Add default shaders into the library
-- [x] Alpha channel (transparency)
-- [x] Improve model loading
-- [ ] Reorganize solution so that it will be easier to compile the project
+## Roadmap
 
-### 0.3v Roadmap
+### 0.3v 
 
 - [ ] New structure of drawing on screen 
 - [ ] New structure for window management
@@ -48,3 +40,4 @@ while(!window.ShouldClose())
 - [ ] Lighting
 - [ ] Viewports
 - [ ] Add easier way to add custom shaders
+- [ ] Add Cmake and configure C# project for easier compilation
