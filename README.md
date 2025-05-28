@@ -14,17 +14,18 @@ A NuGet package for this project has not been created yet. Please see the wiki f
 using Simplicity.NET;
 using Simplicity.NET.Objects;
 
-Window window = new("Window title");
+Window window = new Window("Objects showcase");
 
-Cube cube = new(1,1,1);
+window.Camera.Transform.Position = new Vector3(0, 0, -3);
+window.Scene.BackgroundColor = new Color(50, 150, 150);
 
-while(!window.ShouldClose())
-{
-  window.FrameCalculations();
-  window.Clear(new(100,50,50));
-  window.Draw(cube);
-  window.Render();
-}
+Cube cube = new(new Vector3(2f, 0, 4));
+cube.Color = new Color(50, 50, 255);
+cube.Transform.EulerRotation = new Vector3(45, 0, 45);
+
+window.Scene.Instantiate(cube);
+
+window.Show();
 ```
 
 ## Roadmap
