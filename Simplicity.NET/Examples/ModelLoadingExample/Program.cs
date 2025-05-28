@@ -9,4 +9,6 @@ window.Scene.BackgroundColor = new Color(50, 75, 75);
 Model model = new Model(Directory.GetCurrentDirectory() + "/pillar.obj");
 model.Transform.EulerRotation = new(30, 0, 45);
 
+window.Scene.Instantiate(model);
+
 window.Show();
