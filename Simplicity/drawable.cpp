@@ -10,7 +10,7 @@ Drawable::Drawable(float x, float y){
     this->transform = Transform(position);
 
     //default color (white)
-    Color color;
+    Color color(255,100,100);
     this->color = color;
 }
 
