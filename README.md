@@ -34,16 +34,17 @@ while(!window.ShouldClose())
 - [x] Move texture loading into a separate tool
 - [x] Add default shaders into the library
 - [x] Alpha channel (transparency)
-- [ ] Add easier way to add custom shaders
-- [ ] Drawing tool for simple shapes such as lines, circles, rectangles
-- [ ] Improve model loading
-- [ ] Improvements specified in comments that contain "TODO"
+- [x] Improve model loading
 - [ ] Reorganize solution so that it will be easier to compile the project
 
 ### 0.3v Roadmap
 
-For now, I don't have a general plan on how library should be structured, and creating the structure of the whole library will be a focus for 0.3v
+- [ ] New structure of drawing on screen 
+- [ ] New structure for window management
+- [ ] Drawing tool for simple shapes such as lines, circles, rectangles
 
 ### 0.4v 
 
-Lighting & Viewports
+- [ ] Lighting
+- [ ] Viewports
+- [ ] Add easier way to add custom shaders

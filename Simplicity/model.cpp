@@ -29,7 +29,7 @@ void Model::render(unsigned int shaderProgram)
     calculateTransform(shaderProgram);
 
     for (unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].Draw();
+        meshes[i].render(shaderProgram);
 }
 
 void Model::processNode(aiNode* node, const aiScene* scene)
