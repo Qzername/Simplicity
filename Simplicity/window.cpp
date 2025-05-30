@@ -18,6 +18,8 @@ Window::Window(const char* windowName) {
     };
 
     defaultTexture = Texture2D::LoadFromData(1, 1, textureData, TextureFormat::RGB);
+
+    input = Input(window);
 }
 
 Window::~Window() {
@@ -37,14 +39,11 @@ void Window::show()
         glClearColor(backgroundColor.r/255, backgroundColor.g/255, backgroundColor.b/255, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        cout << "obj start" << endl;
-
         for (auto& obj : scene.objects)
         {
             defaultTexture.SetActive();
             obj->render(shaderProgram);
         }
-        cout << "obj end" << endl;
 
         render();
     }
@@ -69,16 +68,6 @@ void Window::render() {
     glfwSwapBuffers(window);
     glfwPollEvents();
 }
-
-int Window::getKey(int key) {
-	return glfwGetKey(window, key);
-}
-
-vector3 Window::getCursorPos() {
-	double xpos, ypos;
-	glfwGetCursorPos(window, &xpos, &ypos);
-	return vector3(xpos, ypos, 0);
-}   
 
 void Window::setMouseInputMode(int value) {
 	glfwSetInputMode(window, GLFW_CURSOR, value);

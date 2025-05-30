@@ -4,6 +4,7 @@
 #include "drawable.h"
 #include "camera.h"
 #include "scene.h"
+#include "input.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -16,19 +17,18 @@ typedef void(*OnFrameCallback)();
 class Window
 {
 	GLFWwindow* window;
-
 	unsigned int shaderProgram;
+	Texture2D defaultTexture;
 
 	float lastFrame = 0.0f;
+	OnFrameCallback onFrame = nullptr;
 
 	void frameCalculations();
 	void render();
 
-	OnFrameCallback onFrame = nullptr; 
-
-	Texture2D defaultTexture;
-
 public:
+	Input input;
+
 	Scene scene;
 	Camera camera;
 	float deltaTime = 0.0f;
@@ -39,9 +39,6 @@ public:
 	void show();
 
 	void setOnFrameCallback(OnFrameCallback cb);
-
-	int getKey(int key);
-	vector3 getCursorPos();
 
 	void setMouseInputMode(int value);
 	void close();

@@ -1,3 +1,5 @@
+#define STB_IMAGE_IMPLEMENTATION
+
 #include "texture2D.h"
 #include <stb_image/stb_image.h>
 #include <iostream>
