@@ -11,10 +11,4 @@
     <ProjectReference Include="..\..\Simplicity.NET\Simplicity.NET.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Simplicity.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

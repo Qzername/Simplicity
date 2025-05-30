@@ -10,7 +10,6 @@ Simplicity/glad.c
 *.slo
 *.lo
 *.o
-*.obj
 
 # Precompiled Headers
 *.gch
