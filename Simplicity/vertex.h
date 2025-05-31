@@ -5,6 +5,6 @@
 
 struct Vertex {
     vector3 position;
-    vector3 normal;
-    vector2 texCoords;
+    vector3 normal { 0.0f, 0.0f, 0.0f };
+    vector2 texCoords { 0.0f, 0.0f };
 };

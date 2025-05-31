@@ -17,4 +17,6 @@ public:
 	KeyStatus GetButton(KeyCode key);
 	KeyStatus GetMouseButton(MouseKeyCode key);
 	vector2 GetCursorPosition();
+
+	void setMouseInputMode(int value);
 };

@@ -5,12 +5,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <iostream>
+
 Window::Window(const char* windowName) {
     window = initializeGlfw(windowName);
 
-    shaderProgram = compileShaders(loadDefaultShaders());
-    camera.Config(shaderProgram);
-    glUseProgram(shaderProgram);
+    graphics.Initialize();
 
     //set default texture
     unsigned char textureData[] = {
@@ -28,24 +28,19 @@ Window::~Window() {
 
 void Window::show()
 {
+    defaultTexture.SetActive();
     while (!glfwWindowShouldClose(window))
     {
         frameCalculations();
-
-        if(onFrame)
+        graphics.camera.CalculateTransformations();
+        
+        if (onFrame)
             onFrame();
 
-        Color backgroundColor = scene.getBackgroundColor();
-        glClearColor(backgroundColor.r/255, backgroundColor.g/255, backgroundColor.b/255, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glBindVertexArray(0);
 
-        for (auto& obj : scene.objects)
-        {
-            defaultTexture.SetActive();
-            obj->render(shaderProgram);
-        }
-
-        render();
+        glfwSwapBuffers(window);
+        glfwPollEvents();
     }
 }
 
@@ -59,18 +54,7 @@ void Window::frameCalculations() {
 	lastFrame = currentFrame;
 
     //TODO: move it somewhere else and dont calculate it every frame
-    camera.CalculateTransformations();
-}
-
-void Window::render() {
-    glBindVertexArray(0);
-
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-}
-
-void Window::setMouseInputMode(int value) {
-	glfwSetInputMode(window, GLFW_CURSOR, value);
+    graphics.camera.CalculateTransformations();
 }
 
 void Window::close() {

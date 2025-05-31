@@ -1,24 +1,17 @@
 #include "scene.h"
 
-Scene::Scene()
+void Scene::Render(Renderer renderer)
 {
-	backgroundColor = Color(255, 255, 255);
+	for (auto& object : objects)
+		renderer.Render(*object);
 }
 
-Color Scene::getBackgroundColor() {
-	return backgroundColor;
-}
-
-void Scene::setBackgroundColor(Color color) {
-	this->backgroundColor = color;
-}
-
-void Scene::Instantiate(Drawable* shaderProgram)
+void Scene::Instantiate(GraphicsObject* graphicsObject)
 {
-	objects.push_back(shaderProgram);
+	objects.push_back(graphicsObject);
 }
 
-void Scene::Destroy(Drawable* shaderProgram)
+void Scene::Destroy(GraphicsObject* graphicsObject)
 {
-	objects.erase(std::remove(objects.begin(), objects.end(), shaderProgram), objects.end());
+	objects.erase(std::remove(objects.begin(), objects.end(), graphicsObject), objects.end());
 }

@@ -1,6 +1,6 @@
 #include "mesh.h"
 
-Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices) : Drawable(0, 0)
+Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices)
 {
     this->vertices = vertices;
     this->indices = indices;
@@ -27,8 +27,6 @@ Mesh::Mesh(vector<Vertex> vertices, vector<unsigned int> indices) : Drawable(0, 
 
 void Mesh::render(unsigned int shaderProgram)
 {
-    // draw mesh
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, static_cast<unsigned int>(indices.size()), GL_UNSIGNED_INT, 0);
-    glBindVertexArray(0);
 }

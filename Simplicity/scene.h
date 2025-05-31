@@ -1,18 +1,13 @@
 #pragma once
 
 #include <list>
-#include "drawable.h"
+#include "renderer.h"
 
 class Scene {
-	Color backgroundColor;
+	std::vector<GraphicsObject*> objects;
 public:
-	std::vector<Drawable*> objects;
+	void Render(Renderer renderer);
 
-	Scene();
-
-	Color getBackgroundColor();
-	void setBackgroundColor(Color backgroundColor);
-
-	void Instantiate(Drawable* shaderProgram);
-	void Destroy(Drawable* shaderProgram);
+	void Instantiate(GraphicsObject* shaderProgram);
+	void Destroy(GraphicsObject* shaderProgram);
 };

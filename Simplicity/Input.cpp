@@ -26,3 +26,7 @@ vector2 Input::GetCursorPosition()
 	glfwGetCursorPos(window, &xPos, &yPos);
 	return vector2(xPos, yPos);
 }
+
+void Input::setMouseInputMode(int value) {
+	glfwSetInputMode(window, GLFW_CURSOR, value);
+}

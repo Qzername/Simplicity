@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Mesh : public Drawable {
+class Mesh {
     unsigned int VBO, EBO;
     unsigned int VAO;
 
