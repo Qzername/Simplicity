@@ -136,9 +136,8 @@
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
-    <ClCompile Include="cube.cpp" />
     <ClCompile Include="drawable.cpp" />
-    <ClCompile Include="Geometries.cpp" />
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="graphicsObject.cpp" />
     <ClCompile Include="include\glad\glad.c" />
@@ -159,7 +158,6 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameraLink.h" />
     <ClInclude Include="color.h" />
-    <ClInclude Include="cube.h" />
     <ClInclude Include="cubeLink.h" />
     <ClInclude Include="drawable.h" />
     <ClInclude Include="drawableLink.h" />

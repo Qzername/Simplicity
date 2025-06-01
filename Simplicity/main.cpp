@@ -26,14 +26,15 @@ using namespace std;
 void frameCallback();
 
 Window window("test window");
-
-GraphicsObject object;
 Scene scene;
 
 int main()
 {
+	GraphicsObject object;
+
 	object.color = Color(255, 0, 0);
-	object.geometry = Geometries::cube();
+	object.transform.setEulerRotation(vector3(45, 45, 45));
+	object.geometry = Geometries::rectangle(1.0f,1.0f);
 
 	scene.Instantiate(&object);
 

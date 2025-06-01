@@ -1,49 +1,59 @@
-#include "model.h"
+#include "Geometries.h"
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <stb_image/stb_image.h>
+
 #include <iostream>
+#include <string>
+#include <vector>
+#include <map>
 
-Model::Model(string const& path) : Drawable(0, 0)
-{
-    transform = Transform();
+void processNode(aiNode* node, const aiScene* scene, vector<Mesh>* meshes);
+Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
-    Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile(
-        path,
-        aiProcess_Triangulate |
-        aiProcess_GenSmoothNormals |
-        aiProcess_FlipUVs |
-        aiProcess_CalcTangentSpace
-    );
+namespace Geometries {
+    Geometry loadModel(string const& path) {
+        Assimp::Importer importer;
+        const aiScene* scene = importer.ReadFile(
+            path,
+            aiProcess_Triangulate |
+            aiProcess_GenSmoothNormals |
+            aiProcess_FlipUVs |
+            aiProcess_CalcTangentSpace
+        );
 
-    if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
-    {
-        cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
-        return;
+        if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+        {
+            cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
+            return;
+        }
+
+        string directory = path.substr(0, path.find_last_of('/'));
+
+        vector<Mesh> meshes;
+        processNode(scene->mRootNode, scene, &meshes);
+
+        Geometry geometry;
+        geometry.meshes = meshes;
+
+        return geometry;
     }
-
-    directory = path.substr(0, path.find_last_of('/'));
-    processNode(scene->mRootNode, scene);
 }
 
-void Model::render(unsigned int shaderProgram)
-{
-    calculateTransform(shaderProgram);
-
-    for (unsigned int i = 0; i < meshes.size(); i++)
-        meshes[i].render(shaderProgram);
-}
-
-void Model::processNode(aiNode* node, const aiScene* scene)
+void processNode(aiNode* node, const aiScene* scene, vector<Mesh>* meshes)
 {
     for (unsigned int i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh, scene));
+        meshes->push_back(processMesh(mesh, scene));
     }
     for (unsigned int i = 0; i < node->mNumChildren; i++)
-        processNode(node->mChildren[i], scene);
+        processNode(node->mChildren[i], scene, meshes);
 }
 
-Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
+Mesh processMesh(aiMesh* mesh, const aiScene* scene)
 {
     vector<Vertex> vertices;
     vector<unsigned int> indices;

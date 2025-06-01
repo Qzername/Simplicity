@@ -63,9 +63,6 @@
     <ClCompile Include="rectangle.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
     </ClCompile>
-    <ClCompile Include="cube.cpp">
-      <Filter>Resource Files\Graphics\Geometries</Filter>
-    </ClCompile>
     <ClCompile Include="mesh.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
     </ClCompile>
@@ -102,7 +99,7 @@
     <ClCompile Include="graphicsObject.cpp">
       <Filter>Resource Files\Graphics\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Geometries.cpp">
+    <ClCompile Include="Cube.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
     </ClCompile>
   </ItemGroup>
@@ -148,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="quaternion.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cube.h">
-      <Filter>Header Files\Graphics\Geometries</Filter>
     </ClInclude>
     <ClInclude Include="mesh.h">
       <Filter>Header Files\Graphics\Geometries</Filter>
