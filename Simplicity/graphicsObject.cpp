@@ -1,5 +1,8 @@
 #include "graphicsObject.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 void GraphicsObject::render(unsigned int shaderProgram) {
     calculateTransform(shaderProgram);
 

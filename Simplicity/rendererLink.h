@@ -7,7 +7,7 @@
 extern "C" {
 	EXPORT Color Renderer_getBackgroundColor(Renderer* renderer)
 	{
-		renderer->backgroundColor;
+		return renderer->backgroundColor;
 	}
 
 	EXPORT void Renderer_setBackgroundColor(Renderer* renderer, Color color) {
