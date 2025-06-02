@@ -1,9 +1,9 @@
 #include "scene.h"
 
-void Scene::Render(Renderer renderer)
+void Scene::Render(Renderer* renderer)
 {
 	for (auto& object : objects)
-		renderer.Render(*object);
+		renderer->Render(*object);
 }
 
 void Scene::Instantiate(GraphicsObject* graphicsObject)

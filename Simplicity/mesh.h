@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "vertex.h"
-#include "drawable.h"
 
 using namespace std;
 

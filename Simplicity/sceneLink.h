@@ -1,26 +1,22 @@
 #pragma once
+
+#define EXPORT __declspec(dllexport)
+
 #include "scene.h"
 
 extern "C" {
-	//fields and properties
-	__declspec(dllexport) Color Scene_getBackgroundColor(Scene* scene)
+	EXPORT void Scene_instantiate(Scene* scene, GraphicsObject* graphicsObject)
 	{
-		return scene->getBackgroundColor();
+		scene->Instantiate(graphicsObject);
 	}
 
-	__declspec(dllexport) void Scene_setBackgroundColor(Scene* scene, Color color)
+	EXPORT void Scene_destroy(Scene* scene, GraphicsObject* graphicsObject)
 	{
-		scene->setBackgroundColor(color);
+		scene->Destroy(graphicsObject);
 	}
 
-	//methods
-	__declspec(dllexport) void Scene_instantiate(Scene* scene, Drawable* drawable)
+	EXPORT void Scene_render(Scene* scene, Renderer* renderer)
 	{
-		scene->Instantiate(drawable);
-	}
-
-	__declspec(dllexport) void Scene_destroy(Scene* scene, Drawable* drawable)
-	{
-		scene->Destroy(drawable);
+		scene->Render(renderer);
 	}
 }

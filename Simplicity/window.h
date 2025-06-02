@@ -22,8 +22,6 @@ class Window
 	OnFrameCallback onFrame = nullptr;
 
 	void frameCalculations();
-	void render();
-
 public:
 	Graphics graphics;
 	Input input;

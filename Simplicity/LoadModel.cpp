@@ -24,10 +24,12 @@ namespace Geometries {
             aiProcess_CalcTangentSpace
         );
 
+        Geometry geometry;
+
         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
-            return;
+            return geometry;
         }
 
         string directory = path.substr(0, path.find_last_of('/'));
@@ -35,7 +37,6 @@ namespace Geometries {
         vector<Mesh> meshes;
         processNode(scene->mRootNode, scene, &meshes);
 
-        Geometry geometry;
         geometry.meshes = meshes;
 
         return geometry;
