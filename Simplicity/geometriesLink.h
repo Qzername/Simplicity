@@ -13,8 +13,11 @@ extern "C" {
 		return Geometries::rectangle(width, height);
 	}
 
+	EXPORT Geometry* Geometries_wheel(unsigned int segments, float radius) {
+		return Geometries::wheel(segments, radius);
+	}
+
 	EXPORT Geometry* Geometries_loadModel(const char* path) {
-		std::cout << path << endl;
 		return Geometries::loadModel(path);
 	}
 }

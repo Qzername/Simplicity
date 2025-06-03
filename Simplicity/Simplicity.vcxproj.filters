@@ -99,6 +99,9 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
     </ClCompile>
+    <ClCompile Include="Wheel.cpp">
+      <Filter>Resource Files\Graphics\Geometries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="initializationTools.h">

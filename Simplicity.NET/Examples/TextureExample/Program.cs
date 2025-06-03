@@ -17,20 +17,17 @@ byte[] textureData = [
 ];
 Texture2D texture2 = Texture2D.LoadFromData(2, 2, textureData, TextureFormat.RGB);
 
-GraphicsObject rect = new GraphicsObject();
+GraphicsObject rect = new GraphicsObject(Geometries.Rectangle(0.5f, 0.5f));
 rect.Texture = texture2;
 rect.Color = new Color(255, 0, 0);
-rect.Geometry = Geometries.Rectangle(0.5f, 0.5f);
 
-GraphicsObject rect2 = new GraphicsObject();
+GraphicsObject rect2 = new GraphicsObject(Geometries.Rectangle(0.5f, 0.5f));
 rect2.Texture = texture;
-rect2.Geometry = Geometries.Rectangle(0.5f, 0.5f);
 rect2.Transform.Position = new Vector3(-0.5f, -0.5f, 0);
 rect2.Color = new Color(50, 50, 255);
 
-GraphicsObject rect3 = new GraphicsObject();
+GraphicsObject rect3 = new GraphicsObject(Geometries.Rectangle(0.5f, 0.5f));
 rect3.Transform.Position = new(-0.5f, 0, 0);
-rect3.Geometry = Geometries.Rectangle(0.5f, 0.5f);
 rect3.Texture = texture;
 
 

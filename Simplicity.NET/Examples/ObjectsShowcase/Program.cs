@@ -9,18 +9,20 @@ float lastX = 800 / 2;
 float lastY = 600 / 2;
 
 Window window = new Window("Objects showcase");
+var renderer = window.Graphics.Renderer;
 
 window.Graphics.Camera.Transform.Position = new Vector3(0, 0, -3);
-window.Graphics.Renderer.BackgroundColor = new Color(50, 150, 150);
+renderer.BackgroundColor = new Color(50, 150, 150);
 
-GraphicsObject rectangle = new GraphicsObject();
+GraphicsObject rectangle = new GraphicsObject(Geometries.Rectangle(0.5f, 0.5f));
 rectangle.Transform.Position = new Vector3(-1f, 0.5f,0);
-rectangle.Geometry = Geometries.Rectangle(0.5f, 0.5f);
 
-GraphicsObject cube = new GraphicsObject();
+GraphicsObject cube = new GraphicsObject(Geometries.Cube());
 cube.Transform.EulerRotation = new Vector3(45, 0, 45);
 cube.Color = new Color(50, 50, 255);
-cube.Geometry = Geometries.Cube();
+
+GraphicsObject wheel = new GraphicsObject(Geometries.Wheel(32, 0.5f));
+wheel.Transform.Position = new Vector3(-2f, 1f, 0);
 
 Vector3 mousePos = new Vector3();
 
@@ -29,9 +31,10 @@ window.SetOnFrame(() =>
     ProcessKeyboardInput();
     ProcessMouseInput();
 
-    window.Graphics.Renderer.Clear();
-    window.Graphics.Renderer.Render(rectangle);
-    window.Graphics.Renderer.Render(cube);
+    renderer.Clear();
+    renderer.Render(rectangle);
+    renderer.Render(cube);
+    renderer.Render(wheel);
 });
 
 window.Show();
@@ -39,33 +42,36 @@ window.Show();
 // CAMERA MOVEMENT
 void ProcessKeyboardInput()
 {
-    if (window.Input.GetButton(KeyCode.Escape) == KeyStatus.Pressed)
+    var input = window.Input;
+    var camera = window.Graphics.Camera;
+
+    if (input.GetButton(KeyCode.Escape) == KeyStatus.Pressed)
         window.Close();
 
-    if (window.Input.GetButton(KeyCode.G) == KeyStatus.Pressed)
-        window.Input.SetMouseInputMode(MouseInputMode.Disable);
+    if (input.GetButton(KeyCode.G) == KeyStatus.Pressed)
+        input.SetMouseInputMode(MouseInputMode.Disable);
 
-    if (window.Input.GetButton(KeyCode.H) == KeyStatus.Pressed)
-        window.Input.SetMouseInputMode(MouseInputMode.Enable);
+    if (input.GetButton(KeyCode.H) == KeyStatus.Pressed)
+        input.SetMouseInputMode(MouseInputMode.Enable);
 
     float cameraSpeed = 2.5f * window.DeltaTime;
     Vector3 cameraPos = new Vector3(0, 0, 0);
 
-    if (window.Input.GetButton(KeyCode.W) == KeyStatus.Pressed)
-        cameraPos += window.Graphics.Camera.Transform.Forward * cameraSpeed;
-    if (window.Input.GetButton(KeyCode.S) == KeyStatus.Pressed)
-        cameraPos -= window.Graphics.Camera.Transform.Forward * cameraSpeed;
-    if (window.Input.GetButton(KeyCode.A) == KeyStatus.Pressed)
-        cameraPos += window.Graphics.Camera.Transform.Right * cameraSpeed;
-    if (window.Input.GetButton(KeyCode.D) == KeyStatus.Pressed)
-        cameraPos -= window.Graphics.Camera.Transform.Right * cameraSpeed;
+    if (input.GetButton(KeyCode.W) == KeyStatus.Pressed)
+        cameraPos += camera.Transform.Forward * cameraSpeed;
+    if (input.GetButton(KeyCode.S) == KeyStatus.Pressed)
+        cameraPos -= camera.Transform.Forward * cameraSpeed;
+    if (input.GetButton(KeyCode.A) == KeyStatus.Pressed)
+        cameraPos += camera.Transform.Right * cameraSpeed;
+    if (input.GetButton(KeyCode.D) == KeyStatus.Pressed)
+        cameraPos -= camera.Transform.Right * cameraSpeed;
 
-    if (window.Input.GetButton(KeyCode.Space) == KeyStatus.Pressed)
-        cameraPos += window.Graphics.Camera.Transform.Up * cameraSpeed;
-    if (window.Input.GetButton(KeyCode.LeftControl) == KeyStatus.Pressed)
-        cameraPos -= window.Graphics.Camera.Transform.Up * cameraSpeed;
+    if (input.GetButton(KeyCode.Space) == KeyStatus.Pressed)
+        cameraPos += camera.Transform.Up * cameraSpeed;
+    if (input.GetButton(KeyCode.LeftControl) == KeyStatus.Pressed)
+        cameraPos -= camera.Transform.Up * cameraSpeed;
 
-    window.Graphics.Camera.Transform.Position = window.Graphics.Camera.Transform.Position + cameraPos;
+    camera.Transform.Position = camera.Transform.Position + cameraPos;
 }
 
 void ProcessMouseInput()

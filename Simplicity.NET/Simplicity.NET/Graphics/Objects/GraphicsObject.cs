@@ -49,10 +49,33 @@ public class GraphicsObject
         set => GraphicsObject_setGeometry(_graphicsObject, value.GetPtr());
     }
 
-    public GraphicsObject()
+    public GraphicsObject(Geometry geometry)
+    {
+        ConfigureObject();
+
+        Geometry = geometry;
+    }
+
+    public GraphicsObject(Geometry geometry, Vector3 position)
+    {
+        ConfigureObject();
+
+        Transform.Position = position;
+        Geometry = geometry;
+    }
+
+    public GraphicsObject(Geometry geometry, Vector3 position, Color color)
+    {
+        ConfigureObject();
+
+        Transform.Position = position;
+        Geometry = geometry;
+        Color = color;
+    }
+
+    void ConfigureObject()
     {
         _graphicsObject = GraphicsObject_create();
-
         _transform = new Transform(GraphicsObject_getTransform(_graphicsObject));
     }
 }

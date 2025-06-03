@@ -151,6 +151,7 @@
     <ClCompile Include="shaderCompiling.cpp" />
     <ClCompile Include="texture2D.cpp" />
     <ClCompile Include="transform.cpp" />
+    <ClCompile Include="Wheel.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
