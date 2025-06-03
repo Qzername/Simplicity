@@ -9,3 +9,7 @@
 #include "geometriesLink.h"
 #include "transformLink.h"
 #include "texture2DLink.h"
+
+#include "geometryLink.h"
+#include "graphicsObjectLink.h"
+#include "meshLink.h"

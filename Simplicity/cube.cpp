@@ -1,7 +1,7 @@
 #include "Geometries.h"
 
 namespace Geometries {
-	Geometry cube() {
+	Geometry* cube() {
         std::vector<Vertex> vertices = {
             //pos                  //normals //tex coords
             {{-0.5f, -0.5f, -0.5f}, {}, {0.0f, 0.0f}},
@@ -72,6 +72,6 @@ namespace Geometries {
         Geometry geometry;
         geometry.meshes.push_back(mesh);
 
-        return geometry;
+        return new Geometry(geometry);
 	}
 }

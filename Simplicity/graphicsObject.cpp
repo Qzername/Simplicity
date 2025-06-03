@@ -6,6 +6,9 @@
 void GraphicsObject::render(unsigned int shaderProgram) {
     calculateTransform(shaderProgram);
 
+    if(texture)
+        texture->SetActive();
+
     for (auto& mesh : geometry->meshes)
         mesh.render(shaderProgram);
 }

@@ -14,7 +14,7 @@ void processNode(aiNode* node, const aiScene* scene, vector<Mesh>* meshes);
 Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
 namespace Geometries {
-    Geometry loadModel(string const& path) {
+    Geometry* loadModel(string const& path) {
         Assimp::Importer importer;
         const aiScene* scene = importer.ReadFile(
             path,
@@ -29,7 +29,7 @@ namespace Geometries {
         if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
         {
             cout << "ERROR::ASSIMP:: " << importer.GetErrorString() << endl;
-            return geometry;
+            return nullptr;
         }
 
         string directory = path.substr(0, path.find_last_of('/'));
@@ -39,7 +39,7 @@ namespace Geometries {
 
         geometry.meshes = meshes;
 
-        return geometry;
+        return new Geometry(geometry);
     }
 }
 

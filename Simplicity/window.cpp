@@ -14,7 +14,7 @@ Window::Window(const char* windowName) {
 
     //set default texture
     unsigned char textureData[] = {
-        255,255,255
+        255,255,255,
     };
 
     defaultTexture = Texture2D::LoadFromData(1, 1, textureData, TextureFormat::RGB);
@@ -32,7 +32,6 @@ void Window::show()
     while (!glfwWindowShouldClose(window))
     {
         frameCalculations();
-        graphics.camera.CalculateTransformations();
         
         if (onFrame)
             onFrame();

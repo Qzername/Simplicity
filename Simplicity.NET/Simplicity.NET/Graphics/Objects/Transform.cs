@@ -8,20 +8,20 @@ namespace Simplicity.NET.Graphics.Objects
     public class Transform
     {
         [DllImport(LibConsts.LibPath)]
-        static extern Vector3 Transform_getProperty(nint transform, string name);
+        static extern Vector3 Transform_getProperty(IntPtr transform, string name);
 
         [DllImport(LibConsts.LibPath)]
-        static extern void Transform_setProperty(nint transform, string name, Vector3 value);
+        static extern void Transform_setProperty(IntPtr transform, string name, Vector3 value);
 
         [DllImport(LibConsts.LibPath)]
-        static extern Quaternion Transform_getQuaternion(nint transform);
+        static extern Quaternion Transform_getQuaternion(IntPtr transform);
 
         [DllImport(LibConsts.LibPath)]
-        static extern void Transform_setQuaternion(nint transform, Quaternion value);
+        static extern void Transform_setQuaternion(IntPtr transform, Quaternion value);
 
-        nint _transform;
+        IntPtr _transform;
 
-        internal Transform(nint transform)
+        internal Transform(IntPtr transform)
         {
             _transform = transform;
         }

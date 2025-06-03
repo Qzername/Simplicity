@@ -1,5 +1,4 @@
-﻿using Simplicity.NET.Input;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace Simplicity.NET.InputProcessing;
 

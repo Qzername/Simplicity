@@ -5,6 +5,11 @@
 #include "scene.h"
 
 extern "C" {
+	EXPORT Scene* Scene_create() 
+	{
+		return new Scene();
+	}
+
 	EXPORT void Scene_instantiate(Scene* scene, GraphicsObject* graphicsObject)
 	{
 		scene->Instantiate(graphicsObject);

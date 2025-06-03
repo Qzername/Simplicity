@@ -5,7 +5,7 @@
 #include "Graphics.h"
 
 extern "C" {
-	EXPORT Camera* Graphics_getScene(Graphics* graphics) {
+	EXPORT Camera* Graphics_getCamera(Graphics* graphics) {
 		return &graphics->camera;
 	}
 

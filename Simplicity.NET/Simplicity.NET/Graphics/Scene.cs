@@ -6,28 +6,24 @@ namespace Simplicity.NET.Graphics;
 public class Scene
 {
     [DllImport(LibConsts.LibPath)]
-    static extern void Scene_instantiate(nint scene, nint drawable);
-    [DllImport(LibConsts.LibPath)]
-    static extern void Scene_destroy(nint scene, nint drawable);
+    static extern IntPtr Scene_create();
 
     [DllImport(LibConsts.LibPath)]
-    static extern Color Scene_getBackgroundColor(nint scene);
+    static extern void Scene_instantiate(IntPtr scene, IntPtr graphicsObject);
     [DllImport(LibConsts.LibPath)]
-    static extern void Scene_setBackgroundColor(nint scene, Color color);
+    static extern void Scene_destroy(IntPtr scene, IntPtr graphicsObject);
 
-    nint _scene;
+    [DllImport(LibConsts.LibPath)]
+    static extern void Scene_render(IntPtr scene, IntPtr renderer);
 
-    public Color BackgroundColor
+    IntPtr _scene;
+
+    public Scene()
     {
-        get => Scene_getBackgroundColor(_scene);
-        set => Scene_setBackgroundColor(_scene, value);
+        _scene = Scene_create();
     }
 
-    public Scene(nint scene)
-    {
-        _scene = scene;
-    }
-
-    public void Instantiate(Drawable drawable) => Scene_instantiate(_scene, drawable.GetPtr());
-    public void Destroy(Drawable drawable) => Scene_destroy(_scene, drawable.GetPtr());
+    public void Instantiate(GraphicsObject graphicsObject) => Scene_instantiate(_scene, graphicsObject.GetPtr());
+    public void Destroy(GraphicsObject graphicsObject) => Scene_destroy(_scene, graphicsObject.GetPtr());
+    public void Render(Renderer renderer) => Scene_render(_scene, renderer.GetPtr());
 }

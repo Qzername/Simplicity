@@ -1,5 +1,8 @@
-﻿namespace Simplicity.NET;
+﻿using System.Runtime.InteropServices;
 
+namespace Simplicity.NET;
+
+[StructLayout(LayoutKind.Sequential)]
 public struct Vector3
 {
     public float X;

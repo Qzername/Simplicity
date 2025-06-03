@@ -1,4 +1,4 @@
-﻿namespace Simplicity.NET.Input;
+﻿namespace Simplicity.NET.InputProcessing;
 
 public enum MouseKeyCode
 {

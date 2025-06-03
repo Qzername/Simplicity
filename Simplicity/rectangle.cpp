@@ -1,7 +1,7 @@
 #include "Geometries.h"
 
 namespace Geometries {
-    Geometry rectangle(float width, float height) {
+    Geometry* rectangle(float width, float height) {
         std::vector<Vertex> vertices = {
             {{0.0f,  0.0f,   0.0f}, {}, {0.0f, 0.0f}},
             {{width, 0.0f,   0.0f}, {}, {1.0f, 0.0f}},
@@ -19,6 +19,6 @@ namespace Geometries {
         Geometry geometry;
         geometry.meshes.push_back(mesh);
 
-        return geometry;
+        return new Geometry(geometry);
     }
 }

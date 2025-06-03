@@ -9,6 +9,11 @@ public class Geometry
 
     internal IntPtr _geometry;
 
+    internal IntPtr GetPtr()
+    {
+        return _geometry;
+    }
+
     internal Geometry(IntPtr geometry)
     {
         _geometry = geometry;

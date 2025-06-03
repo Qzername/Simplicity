@@ -16,11 +16,8 @@ extern "C" {
 		graphics->color = color;
 	}
 
-	EXPORT Transform GraphicsObject_getTransform(GraphicsObject* graphics) {
-		return graphics->transform;
-	}
-	EXPORT void GraphicsObject_setTransform(GraphicsObject* graphics, Transform transform) {
-		graphics->transform = transform;
+	EXPORT Transform* GraphicsObject_getTransform(GraphicsObject* graphics) {
+		return &graphics->transform;
 	}
 	
 	EXPORT Texture2D* GraphicsObject_getTexture(GraphicsObject* graphics) {
