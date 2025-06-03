@@ -32,8 +32,8 @@ window.Show();
 
 ### 0.3v 
 
-- [ ] New structure of drawing on screen 
-- [ ] New structure for window management
+- [x] New structure of drawing on screen 
+- [x] New structure for window management
 - [ ] Drawing tool for simple shapes such as lines, circles, rectangles
 
 ### 0.4v 
