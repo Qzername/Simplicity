@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Input">
       <UniqueIdentifier>{0bcee00e-eba6-4e3e-adb7-9d077877a9c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Links\Object Links">
+      <UniqueIdentifier>{dacdb487-d5a7-47b2-9834-4507b6bc42a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="initializationTools.cpp">
@@ -179,12 +182,6 @@
     <ClInclude Include="graphicsObject.h">
       <Filter>Header Files\Graphics\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="Geometries.h">
-      <Filter>Header Files\Graphics\Geometries</Filter>
-    </ClInclude>
-    <ClInclude Include="geometriesLink.h">
-      <Filter>Links</Filter>
-    </ClInclude>
     <ClInclude Include="graphicsLink.h">
       <Filter>Links</Filter>
     </ClInclude>
@@ -193,6 +190,21 @@
     </ClInclude>
     <ClInclude Include="inputLink.h">
       <Filter>Links</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometries.h">
+      <Filter>Header Files\Graphics\Geometries</Filter>
+    </ClInclude>
+    <ClInclude Include="geometriesLink.h">
+      <Filter>Links\Object Links</Filter>
+    </ClInclude>
+    <ClInclude Include="geometryLink.h">
+      <Filter>Links\Object Links</Filter>
+    </ClInclude>
+    <ClInclude Include="graphicsObjectLink.h">
+      <Filter>Links\Object Links</Filter>
+    </ClInclude>
+    <ClInclude Include="meshLink.h">
+      <Filter>Links\Object Links</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 
 #include <vector>
 
-struct Geometry {
+class Geometry {
 public:
 	vector<Mesh> meshes;
 };

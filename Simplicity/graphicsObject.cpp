@@ -6,7 +6,7 @@
 void GraphicsObject::render(unsigned int shaderProgram) {
     calculateTransform(shaderProgram);
 
-    for (auto& mesh : geometry.meshes)
+    for (auto& mesh : geometry->meshes)
         mesh.render(shaderProgram);
 }
 

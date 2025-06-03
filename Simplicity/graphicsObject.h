@@ -12,7 +12,7 @@ public:
 	Color color;
 	Transform transform;
 	Texture2D* texture;
-	Geometry geometry;
+	Geometry* geometry;
 
 	void render(unsigned int shaderProgram);
 };
