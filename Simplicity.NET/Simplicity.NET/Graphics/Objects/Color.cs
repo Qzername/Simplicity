@@ -1,4 +1,4 @@
-﻿namespace Simplicity.NET
+﻿namespace Simplicity.NET.Graphics.Objects
 {
     public struct Color
     {

@@ -1,5 +1,6 @@
 ﻿using Simplicity.NET;
-using Simplicity.NET.Objects;
+using Simplicity.NET.Graphics.Objects;
+using Simplicity.NET.Graphics.Objects;
 
 Window window = new("Model loading example");
 

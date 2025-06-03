@@ -1,5 +1,7 @@
 ﻿using Simplicity.NET;
-using Simplicity.NET.Objects;
+using Simplicity.NET.Graphics.Objects;
+using Simplicity.NET.Graphics.Objects;
+using Simplicity.NET.InputProcessing;
 using System.Collections.Generic;
 
 //for camera movement

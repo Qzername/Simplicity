@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Simplicity.NET
+namespace Simplicity.NET.Graphics.Objects
 {
     /// <summary>
     /// Information about the position and rotation of an object.
@@ -8,20 +8,20 @@ namespace Simplicity.NET
     public class Transform
     {
         [DllImport(LibConsts.LibPath)]
-        static extern Vector3 Transform_getProperty(IntPtr transform, string name);
+        static extern Vector3 Transform_getProperty(nint transform, string name);
 
         [DllImport(LibConsts.LibPath)]
-        static extern void Transform_setProperty(IntPtr transform, string name, Vector3 value);
+        static extern void Transform_setProperty(nint transform, string name, Vector3 value);
 
         [DllImport(LibConsts.LibPath)]
-        static extern Quaternion Transform_getQuaternion(IntPtr transform);
+        static extern Quaternion Transform_getQuaternion(nint transform);
 
         [DllImport(LibConsts.LibPath)]
-        static extern void Transform_setQuaternion(IntPtr transform, Quaternion value);
+        static extern void Transform_setQuaternion(nint transform, Quaternion value);
 
-        IntPtr _transform;
+        nint _transform;
 
-        internal Transform(IntPtr transform)
+        internal Transform(nint transform)
         {
             _transform = transform;
         }

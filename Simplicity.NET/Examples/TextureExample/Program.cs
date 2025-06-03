@@ -1,5 +1,6 @@
 ﻿using Simplicity.NET;
-using Simplicity.NET.Objects;
+using Simplicity.NET.Graphics.Objects;
+using Simplicity.NET.Graphics.Objects;
 
 Window window = new("Texture example");
 window.Scene.BackgroundColor = new Color(50, 75, 75);

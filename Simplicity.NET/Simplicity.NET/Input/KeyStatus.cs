@@ -1,4 +1,4 @@
-﻿namespace Simplicity.NET;
+﻿namespace Simplicity.NET.InputProcessing;
 
 public enum KeyStatus
 {

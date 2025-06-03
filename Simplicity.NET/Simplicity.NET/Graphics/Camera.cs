@@ -1,17 +1,18 @@
-﻿using System.Runtime.InteropServices;
+﻿using Simplicity.NET.Graphics.Objects;
+using System.Runtime.InteropServices;
 
-namespace Simplicity.NET
+namespace Simplicity.NET.Graphics
 {
     public class Camera
     {
         [DllImport(LibConsts.LibPath)]
-        static extern IntPtr Camera_getTransform(IntPtr camera);
+        static extern nint Camera_getTransform(nint camera);
         [DllImport(LibConsts.LibPath)]
-        static extern float Camera_getFOV(IntPtr camera);
+        static extern float Camera_getFOV(nint camera);
         [DllImport(LibConsts.LibPath)]
-        static extern void Camera_setFOV(IntPtr camera, float FOV);
+        static extern void Camera_setFOV(nint camera, float FOV);
 
-        IntPtr _camera;
+        nint _camera;
 
         Transform _transform;
         public Transform Transform => _transform;
@@ -22,7 +23,7 @@ namespace Simplicity.NET
             set => Camera_setFOV(_camera, value);
         }
 
-        internal Camera(IntPtr camera)
+        internal Camera(nint camera)
         {
             _camera = camera;
             _transform = new Transform(Camera_getTransform(camera));
