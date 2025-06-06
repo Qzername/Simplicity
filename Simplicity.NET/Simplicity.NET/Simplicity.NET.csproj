@@ -8,10 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="assimp-vc143-mtd.dll" />
     <None Remove="Simplicity.dll" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="assimp-vc143-mtd.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Simplicity.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
