@@ -12,24 +12,10 @@ public class Ball
 
     public Vector2 PreviousPosition;
 
-    /*
-     * the reason behind this value is that getting 
-     * every time position from C++ side of library is costly 
-     * 
-     * so we set position to graphics object only when necessary
-     * 
-     * I will optimize this in the future.
-     */
-    bool isDirty = false;
-    Vector2 _tempPosition;
     public Vector2 Position
     {
-        get => _tempPosition;
-        set
-        {
-            _tempPosition = value;
-            isDirty = true;
-        }
+        get => (Vector2)graphicsObject.Transform.Position;
+        set => graphicsObject.Transform.Position = value;
     }
 
     public Vector2 Velocity => Position - PreviousPosition;
@@ -38,25 +24,20 @@ public class Ball
 
     public Ball(Vector2 position, float radius = 1f)
     {
-        Position = new Vector2(rng.NextSingle() * 80 - 40, position.Y);
-        PreviousPosition = Position;
-
         Radius = radius + rng.NextSingle();
 
         graphicsObject = new GraphicsObject(
             Geometries.Wheel(16, Radius),
-            new Vector3(Position.X, Position.Y, 0),
+            new Vector3(position.X, position.Y, 0),
             new Color(rng.Next(0, 256), rng.Next(0, 256), rng.Next(0, 256))
         );
+
+        Position = new Vector2(rng.NextSingle() * 80 - 40, position.Y);
+        PreviousPosition = Position;
     }
 
     public void Render(Renderer renderer)
     {
-        if (isDirty)
-        {
-            graphicsObject.Transform.Position = new Vector3(Position.X, Position.Y, 0);
-            isDirty = false;
-        }
         renderer.Render(graphicsObject);
     }
 }

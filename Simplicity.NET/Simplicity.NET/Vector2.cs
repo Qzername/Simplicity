@@ -11,6 +11,11 @@ public struct Vector2
         Y = y;
     }
 
+    public static explicit operator Vector2(Vector3 value)
+    {
+        return new Vector2(value.X, value.Y);
+    }
+
     public static Vector2 operator +(Vector2 a, Vector2 b)
     {
         return new Vector2(a.X + b.X, a.Y + b.Y);

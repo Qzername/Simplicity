@@ -16,6 +16,11 @@ public struct Vector3
         Z = z;
     }
 
+    public static implicit operator Vector3(Vector2 value)
+    {
+        return new Vector3(value.X, value.Y, 0f);
+    }
+
     public static Vector3 operator +(Vector3 a, Vector3 b)
     {
         return new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
