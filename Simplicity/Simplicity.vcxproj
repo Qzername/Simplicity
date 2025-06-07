@@ -135,6 +135,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="canvas.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="graphics.cpp" />
@@ -157,6 +158,8 @@
   <ItemGroup>
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameraLink.h" />
+    <ClInclude Include="canvas.h" />
+    <ClInclude Include="canvasLink.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="Geometries.h" />
     <ClInclude Include="geometriesLink.h" />

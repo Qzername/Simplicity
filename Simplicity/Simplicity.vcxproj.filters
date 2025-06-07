@@ -43,6 +43,12 @@
     <Filter Include="Links\Object Links">
       <UniqueIdentifier>{dacdb487-d5a7-47b2-9834-4507b6bc42a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Graphics\Tools">
+      <UniqueIdentifier>{e5f526a7-6846-412e-a023-0160f3da433d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Graphics\Tools">
+      <UniqueIdentifier>{b29bcbc3-6484-4d02-b236-312d1ea974b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="initializationTools.cpp">
@@ -69,9 +75,6 @@
     <ClCompile Include="LoadModel.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
-      <Filter>Resource Files\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="color.cpp">
       <Filter>Resource Files\Graphics\Objects</Filter>
     </ClCompile>
@@ -80,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="transform.cpp">
       <Filter>Resource Files\Graphics\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="scene.cpp">
-      <Filter>Resource Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Input.cpp">
       <Filter>Resource Files\Input</Filter>
@@ -101,6 +101,15 @@
     </ClCompile>
     <ClCompile Include="Wheel.cpp">
       <Filter>Resource Files\Graphics\Geometries</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Resource Files\Graphics\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="camera.cpp">
+      <Filter>Resource Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="canvas.cpp">
+      <Filter>Resource Files\Graphics\Tools</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,9 +160,6 @@
     </ClInclude>
     <ClInclude Include="transform.h">
       <Filter>Header Files\Graphics\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="scene.h">
-      <Filter>Header Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="vector3.h">
       <Filter>Header Files</Filter>
@@ -208,6 +214,15 @@
     </ClInclude>
     <ClInclude Include="meshLink.h">
       <Filter>Links\Object Links</Filter>
+    </ClInclude>
+    <ClInclude Include="canvas.h">
+      <Filter>Header Files\Graphics\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files\Graphics\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="canvasLink.h">
+      <Filter>Links</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

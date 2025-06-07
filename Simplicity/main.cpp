@@ -13,3 +13,4 @@
 #include "geometryLink.h"
 #include "graphicsObjectLink.h"
 #include "meshLink.h"
+#include "canvasLink.h"
