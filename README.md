@@ -1,7 +1,8 @@
 # Simplicity
 
-Simplicity is a graphics library for C# designed to be as straightforward as possible.
-The library minimizes the lines of code required to draw 2D/3D objects on the screen.
+Simplicity is a graphics library for C# designed to simplify drawing 2D and 3D objects on the screen while maintaining excellent modularity.
+
+The core is written in C++ in a way that makes it easy to add support for languages other than C#. In the (far) future, I plan to add support for more languages, such as Python.
 
 > [!WARNING]
 > This project is still a work in progress. Expect frequent changes between versions, bugs, and missing features.
@@ -40,18 +41,20 @@ window.Show();
 
 ### 0.4v 
 
-- [ ] Viewports
-- [ ] Unit tests
-- [ ] Brushes for canvas
+- [x] Cmake configuration
+- [ ] Reorganize project
 - [ ] Automatic link files generation
-- [ ] Cmake and configure C# project for easier compilation
+- [ ] Unit tests
+- [ ] Viewports
+- [ ] Brushes for canvas
+- [ ] In code model creation
 - [ ] Easier way to add custom shaders
 - [ ] Space-screen position conversion
-- [ ] In runtime window title control
-- [ ] Window position control
+- [ ] In-runtime window title control
 - [ ] Ability to change window icon
+- [ ] Window position control
 
 ### 0.5v
 
 - [ ] Lighting
-
+*and more... (TBD)*
