@@ -1,0 +1,32 @@
+#include <Input/Input.h>
+
+Input::Input()
+{
+	window = nullptr;
+}
+
+Input::Input(GLFWwindow* window)
+{
+	this->window = window;
+}
+
+KeyStatus Input::GetButton(KeyCode key)
+{
+	return static_cast<KeyStatus>(glfwGetKey(window, static_cast<int>(key)));
+}
+
+KeyStatus Input::GetMouseButton(MouseKeyCode key)
+{
+	return static_cast<KeyStatus>(glfwGetMouseButton(window, static_cast<int>(key)));
+}
+
+Vector2 Input::GetCursorPosition()
+{
+	double xPos, yPos;
+	glfwGetCursorPos(window, &xPos, &yPos);
+	return Vector2(xPos, yPos);
+}
+
+void Input::setMouseInputMode(int value) {
+	glfwSetInputMode(window, GLFW_CURSOR, value);
+}

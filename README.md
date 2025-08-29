@@ -42,7 +42,7 @@ window.Show();
 ### 0.4v 
 
 - [x] Cmake configuration
-- [ ] Reorganize project
+- [x] Reorganize project
 - [ ] Automatic link files generation
 - [ ] Unit tests
 - [ ] Viewports
