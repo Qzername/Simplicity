@@ -43,6 +43,7 @@ window.Show();
 
 - [x] Cmake configuration
 - [x] Reorganize project
+- [ ] Add examples for Simplicity C++ side) 
 - [ ] Automatic link files generation
 - [ ] Unit tests
 - [ ] Viewports
