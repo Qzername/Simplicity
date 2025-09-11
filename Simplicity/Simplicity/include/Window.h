@@ -1,4 +1,7 @@
 #pragma once
+
+#define API __declspec(dllexport)
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
@@ -8,7 +11,7 @@
 
 typedef void(*OnFrameCallback)();
 
-class Window
+class API Window
 {
 	GLFWwindow* window;
 	unsigned int shaderProgram;
@@ -24,7 +27,7 @@ public:
 
 	float deltaTime = 0.0f;
 
-	Window(const char* windowName);
+	explicit Window(const char* windowName);
 	~Window();
 
 	void show();

@@ -16,7 +16,7 @@ extern "C" {
 		return &window->input;
 	}
 
-	EXPORT Graphics* Window_getGraphics(Window* window) 
+	EXPORT Graphics* Window_getGraphics(Window* window)
 	{
 		return &window->graphics;
 	}
