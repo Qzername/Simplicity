@@ -10,10 +10,12 @@ window.Graphics.Renderer.BackgroundColor = new Color(50, 75, 75);
 GraphicsObject model = new GraphicsObject(Geometries.LoadModel(Directory.GetCurrentDirectory() + "/pillar.obj"));
 model.Transform.EulerRotation = new(30, 0, 45);
 
-window.SetOnFrame(() =>
+window.OnFrame += (w) =>
 {
-    window.Graphics.Renderer.Clear();
-    window.Graphics.Renderer.Render(model);
-});
+    var renderer = window.Graphics.Renderer;
+
+    renderer.Clear();
+    renderer.Render(model);
+};
 
 window.Show();

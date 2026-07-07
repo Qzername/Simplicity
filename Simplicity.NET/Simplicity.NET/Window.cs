@@ -39,14 +39,17 @@ public class Window
     GraphicsSystem _graphics;
     public GraphicsSystem Graphics => _graphics;
 
+    public event Action<Window> OnFrame;
+
     public Window(string windowName)
     {
         _window = Window_create(windowName);
         _input = new Input(Window_getInput(_window));
         _graphics = new GraphicsSystem(Window_getGraphics(_window));
+
+        Window_setOnFrame(_window, () => OnFrame?.Invoke(this));
     }
 
     public void Show() => Window_show(_window);
-    public void SetOnFrame(OnFrameDelegate onFrame) => Window_setOnFrame(_window, onFrame);
     public void Close() => Window_close(_window);
 }

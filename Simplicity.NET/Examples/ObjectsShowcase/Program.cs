@@ -26,7 +26,7 @@ wheel.Transform.Position = new Vector3(-2f, 1f, 0);
 
 Vector3 mousePos = new Vector3();
 
-window.SetOnFrame(() =>
+window.OnFrame += (w) =>
 {
     ProcessKeyboardInput();
     ProcessMouseInput();
@@ -35,7 +35,7 @@ window.SetOnFrame(() =>
     renderer.Render(rectangle);
     renderer.Render(cube);
     renderer.Render(wheel);
-});
+};
 
 window.Show();
 

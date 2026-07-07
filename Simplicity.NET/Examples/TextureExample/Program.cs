@@ -30,13 +30,14 @@ GraphicsObject rect3 = new GraphicsObject(Geometries.Rectangle(0.5f, 0.5f));
 rect3.Transform.Position = new(-0.5f, 0, 0);
 rect3.Texture = texture;
 
-
-window.SetOnFrame(() =>
+window.OnFrame += (w) =>
 {
-    window.Graphics.Renderer.Clear();
-    window.Graphics.Renderer.Render(rect);
-    window.Graphics.Renderer.Render(rect2);
-    window.Graphics.Renderer.Render(rect3);
-});
+    var renderer = window.Graphics.Renderer;
+
+    renderer.Clear();
+    renderer.Render(rect);
+    renderer.Render(rect2);
+    renderer.Render(rect3);
+};
 
 window.Show();

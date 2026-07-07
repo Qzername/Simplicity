@@ -18,7 +18,7 @@ GraphicsObject wheel = new GraphicsObject(Geometries.Wheel(64, Simulation.Constr
 
 float timer = 0f;
 
-window.SetOnFrame(() => {
+window.OnFrame += (window) => {
     simulation.NextFrame(window.DeltaTime);
 
     renderer.Clear();
@@ -45,6 +45,6 @@ window.SetOnFrame(() => {
         simulation.AddBall(new Vector2(0, 40));
     }
 
-});
+};
 
 window.Show();
