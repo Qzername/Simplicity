@@ -12,3 +12,11 @@ add_custom_command(
 	COMMAND_EXPAND_LISTS
     COMMENT "Copying necessary dlls to executable directory..."
 )
+
+add_custom_command(
+    TARGET BasicWindow POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "$<IF:$<CONFIG:Debug>,${CMAKE_BINARY_DIR}/vcpkg_installed/${VCPKG_TARGET_TRIPLET}/debug/bin,${CMAKE_BINARY_DIR}/vcpkg_installed/${VCPKG_TARGET_TRIPLET}/bin>"
+        "$<TARGET_FILE_DIR:BasicWindow>"
+    COMMENT "Copying all vcpkg DLLs..."
+)
