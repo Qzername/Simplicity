@@ -1,7 +1,14 @@
 add_executable(BasicWindow main.cpp)
 
-# Link your lib (transitively pulls all dependencies)
 target_link_libraries(BasicWindow PRIVATE Simplicity)
-
-# Optional: require C++20 here as well
 target_compile_features(BasicWindow PRIVATE cxx_std_20)
+
+add_custom_command(
+	TARGET BasicWindow POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy_if_different
+	"$<TARGET_FILE:Simplicity>"
+	"$<TARGET_RUNTIME_DLLS:BasicWindow>"
+    "$<TARGET_FILE_DIR:BasicWindow>"
+	COMMAND_EXPAND_LISTS
+    COMMENT "Copying necessary dlls to executable directory..."
+)

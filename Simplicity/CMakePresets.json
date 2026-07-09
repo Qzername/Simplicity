@@ -1,0 +1,15 @@
+{
+	"version": 3,
+	"configurePresets": [
+		{
+			"name": "vcpkg-windows",
+			"displayName": "Windows x64 with vcpkg",
+			"description": "Sets up the vcpkg toolchain automatically",
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/out/build/${name}",
+			"cacheVariables": {
+				"CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+			}
+		}
+	]
+}
