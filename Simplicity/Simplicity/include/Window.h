@@ -1,6 +1,6 @@
 #pragma once
 
-#define API __declspec(dllexport)
+#include "coreDefinitions.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -11,7 +11,7 @@
 
 typedef void(*OnFrameCallback)();
 
-class API Window
+class CPP_LIB_EXP Window
 {
 	GLFWwindow* window;
 	unsigned int shaderProgram;

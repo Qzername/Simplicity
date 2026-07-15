@@ -1,8 +1,10 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 #include <Graphics/Renderer.h>
 
-class Scene {
+class CPP_LIB_EXP Scene {
 	std::vector<GraphicsObject*> objects;
 public:
 	void Render(Renderer* renderer);

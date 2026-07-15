@@ -1,9 +1,11 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 #include <Vector3.h>
 #include <Graphics/Renderer.h>
 
-class Canvas {
+class CPP_LIB_EXP Canvas {
 	Renderer* renderer;
 public:
 	Canvas();

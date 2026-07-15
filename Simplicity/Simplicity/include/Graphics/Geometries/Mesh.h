@@ -1,12 +1,14 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 #include <vector>
 
 #include <Graphics/Vertex.h>
 
 using namespace std;
 
-class Mesh {
+class CPP_LIB_EXP Mesh {
     unsigned int VBO, EBO;
     unsigned int VAO;
 

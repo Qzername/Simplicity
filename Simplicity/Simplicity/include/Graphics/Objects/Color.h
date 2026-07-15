@@ -1,5 +1,8 @@
 #pragma once
-struct Color {
+
+#include "coreDefinitions.h"
+
+struct CPP_LIB_EXP Color {
 	float r, g, b, w;
 
 	Color(float r, float g, float b);

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 #include <Graphics/Objects/Transform.h>
 
-class Camera {
+class CPP_LIB_EXP Camera {
 	unsigned int shaderProgramID;
 
 public:

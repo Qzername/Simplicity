@@ -2,7 +2,7 @@
 
 int main()
 {
-    Window window("test");
+    Window window("Basic window");
 
     window.show();
 

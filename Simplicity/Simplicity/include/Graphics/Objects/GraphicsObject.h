@@ -1,11 +1,13 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 #include "Color.h"
 #include "Transform.h"
 #include "Texture2D.h"
 #include "Geometry.h"
 
-class GraphicsObject {
+class CPP_LIB_EXP GraphicsObject {
 	void calculateTransform(unsigned int shaderProgram);
 
 public:

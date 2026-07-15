@@ -8,3 +8,6 @@ project(SimplicityExamples LANGUAGES CXX)
 
 add_subdirectory(Simplicity)
 add_subdirectory(Examples/BasicWindow)
+add_subdirectory(Examples/ObjectsShowcase)
+add_subdirectory(Examples/TextureExample)
+add_subdirectory(Examples/ModelLoadingExample)

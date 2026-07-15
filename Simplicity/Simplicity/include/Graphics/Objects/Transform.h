@@ -1,10 +1,11 @@
 #pragma once
+
+#include "coreDefinitions.h"
+
 #include <Vector3.h>
 #include <Quaternion.h>
 
-//this is a class because in future
-//it will have methods
-class Transform {
+class CPP_LIB_EXP Transform {
 	Vector3 position;
 	
 	//rotation

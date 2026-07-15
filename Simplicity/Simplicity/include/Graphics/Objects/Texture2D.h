@@ -1,5 +1,7 @@
 #pragma once
 
+#include "coreDefinitions.h"
+
 enum class TextureFormat
 {
 	SingleColor = 1,
@@ -7,7 +9,7 @@ enum class TextureFormat
 	RGBA = 4
 };
 
-class Texture2D {
+class CPP_LIB_EXP Texture2D {
 	unsigned int texture;
 
 	Texture2D(int width, int height, unsigned char data[], TextureFormat textureFormat);
