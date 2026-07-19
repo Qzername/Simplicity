@@ -1,4 +1,5 @@
 from cxxheaderparser.simple import parse_string
+import link_creator as lc
 
 def parse(content):
     data = parse_string(content)
@@ -6,14 +7,19 @@ def parse(content):
     for class_obj in data.namespace.classes:
         class_name = class_obj.class_decl.typename.segments[0].name
         
+        f = lc.create_link(class_name)
+
         print(class_name + ":")
 
         for field in class_obj.fields:
             print("  ", field.name)
 
         for method in class_obj.methods:    
+            lc.add_method_to_link(f, class_name, method)
+
             method_name = method.name.segments[0].name
-            
+        
+
             if method.return_type != None:	
                 return_type = method.return_type.format()
             else:
@@ -30,3 +36,5 @@ def parse(content):
                 param_str = param_str.removesuffix(", ")
                 
             print("  ", return_type, method_name + "("+ param_str+")")
+
+        lc.close_link(f)
