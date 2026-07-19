@@ -12,8 +12,8 @@ def parse(content):
         print(class_name + ":")
 
         for field in class_obj.fields:
-            print("  ", field.name)
-
+            lc.add_field_to_link(f, class_name, field)
+            
         for method in class_obj.methods:    
             lc.add_method_to_link(f, class_name, method)
 
