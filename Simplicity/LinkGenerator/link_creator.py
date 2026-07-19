@@ -76,7 +76,7 @@ def get_params_str(method):
     for param in method.parameters:
         param_name = param.name
         param_type = param.type.format()
-        parameters += param_type + " " + param_name + " "  
+        parameters += param_type + " " + param_name + ", "  
 
         called_method_parameters = param_name + ", "
 
