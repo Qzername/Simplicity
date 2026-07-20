@@ -73,25 +73,50 @@ def add_method_to_link(file, class_name, method):
     if method.access != "public" or method.destructor:
         return
 
-    if method.return_type == None:	
-        decl, impl = format_params(method)
+    decl = []
+    impl = []
+    setups = ""
 
-        file.write(f"   EXPORT {class_name}* {class_name}_create({decl.removeprefix(", ")})\n")
+    for param in method.parameters:
+        ptype = param.type.format()
+        if "vector" in ptype:
+            inner = ptype.split("<")[1].split(">")[0]
+            
+            decl.extend([f"{inner}* {param.name}", f"int {param.name}Count"])
+            impl.append(f"{param.name}Vec")
+            
+            setups += f"       vector<{inner}> {param.name}Vec;\n"
+            setups += f"       {param.name}Vec.assign({param.name}, {param.name} + {param.name}Count);\n\n"
+        else:
+            decl.append(f"{ptype} {param.name}")
+            impl.append(param.name)
+
+    decl_str = ", ".join(decl)
+    impl_str = ", ".join(impl)
+
+    if method.return_type == None:
+        file.write(f"   EXPORT {class_name}* {class_name}_create({decl_str})\n")
         file.write("   {\n")
-        file.write(f"       return new {class_name}({impl});\n")
+
+        if setups: 
+            file.write(setups)
+
+        file.write(f"       return new {class_name}({impl_str});\n")
         file.write("   }\n\n")
         return
-    
+
     return_type = method.return_type.format()
 
-    decl, impl = format_params(method)
+    if decl_str != "":
+        decl_str = ", " + decl_str
 
-    if decl != "":
-        decl = ", "+decl
-
-    file.write(f"   EXPORT {return_type} {class_name}_{method_name}({class_name}* obj{decl})\n")
+    file.write(f"   EXPORT {return_type} {class_name}_{method_name}({class_name}* obj{decl_str})\n")
     file.write("   {\n")
-    file.write(f"       obj->{method_name}({impl});\n")
+
+    if setups: 
+        file.write(setups)
+
+    file.write(f"       obj->{method_name}({impl_str});\n")
     file.write("   }\n\n")
 
 def close_link(file):
